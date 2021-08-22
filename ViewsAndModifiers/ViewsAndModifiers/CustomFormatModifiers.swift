@@ -5,8 +5,8 @@
 //  Created by Tiger Yang on 8/21/21.
 //
 
-import Foundation
 import SwiftUI
+import Foundation
 
 struct Title: ViewModifier {
     func body(content: Content) -> some View {
@@ -19,8 +19,20 @@ struct Title: ViewModifier {
     }
 }
 
+struct BlueTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+    }
+}
+
 extension View {
     func titleStyle() -> some View {
         self.modifier(Title())
+    }
+    
+    func blueTitleStyle() -> some View {
+        self.modifier(BlueTitle())
     }
 }

@@ -21,7 +21,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .background(backGroundIsRed ? Color.red : Color.green)
                 .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-            
+                
             Text("goodbye world")
                 .padding()
                 .background(Color.blue)
@@ -31,7 +31,7 @@ struct ContentView: View {
                 .background(Color.red)
             
             howdyWorldTextView
-                .font(.body)
+                .blueTitleStyle()
             
             CapsuleTextView(text: "Nevermind")
         }
