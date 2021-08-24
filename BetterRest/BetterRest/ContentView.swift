@@ -13,9 +13,7 @@ struct ContentView: View {
     @State private var sleepAmount: Double = 8.0
     @State private var coffeeAmount: Int = 1
     
-    @State private var alertTitle: String = ""
-    @State private var alertMessage: String = ""
-    @State private var showingAlert: Bool = false
+    @State private var bedTimeText: String = "12:54 AM"
     
     static var defaultWakeDate: Date {
         var components = DateComponents()
@@ -33,6 +31,9 @@ struct ContentView: View {
                     DatePicker("Please enter a time",
                                selection: $wakeUpDate,
                                displayedComponents: .hourAndMinute)
+                        .onChange(of: wakeUpDate, perform: { value in
+                            calculateBedTime()
+                        })
                         .datePickerStyle(WheelDatePickerStyle())
                         .labelsHidden()
                 }
@@ -45,6 +46,9 @@ struct ContentView: View {
                         Text("\(sleepAmount, specifier: "%g")")
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
+                    .onChange(of: sleepAmount, perform: { value in
+                        calculateBedTime()
+                    })
                 }
                 
                 Section {
@@ -56,21 +60,20 @@ struct ContentView: View {
                             Text("\($0) \($0 == 1 ? "cup" : "cups")")
                         }
                     }
+                    .onChange(of: coffeeAmount, perform: { value in
+                        calculateBedTime()
+                    })
+                }
+                
+                Section {
+                    Text("Recommended Bedtime")
+                        .font(.headline)
+                    Text("\(bedTimeText)")
+                        .font(.largeTitle)
+                        .frame(maxWidth: 400, maxHeight: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 }
             }
             .navigationBarTitle("BetterRest")
-            .navigationBarItems(
-                trailing:
-                    Button(action: calculateBedTime) {
-                        Text("Calculate")
-                    }
-            )
-            .alert(isPresented: $showingAlert) {
-                Alert(
-                    title: Text(alertTitle),
-                    message: Text(alertMessage),
-                    dismissButton: .default(Text("Ok")))
-            }
         }
     }
     
@@ -81,8 +84,7 @@ struct ContentView: View {
                 let modelConfig = MLModelConfiguration()
                 return try SleepCalculator(configuration: modelConfig)
             } catch {
-                alertTitle = "Calculation Error"
-                alertMessage = "The model failed while estimating your sleep..."
+                bedTimeText = "The model failed while estimating your sleep..."
                 fatalError("Calculation Error")
             }
         }()
@@ -96,6 +98,7 @@ struct ContentView: View {
         
         // attempt a prediction
         do {
+            // coffee amount is actually row (from picker) + 1
             let prediction = try model.prediction(wake: Double(hoursInSeconds + minutesInSeconds), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount + 1))
             
             let sleepTimeEstimate = wakeUpDate - prediction.actualSleep
@@ -103,12 +106,10 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
             
-            alertTitle = "Your dream bedtime is"
-            alertMessage = formatter.string(from: sleepTimeEstimate)
+            bedTimeText = formatter.string(from: sleepTimeEstimate)
         } catch {
             
         }
-        showingAlert = true
     }
 }
 
