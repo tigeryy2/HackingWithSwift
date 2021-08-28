@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var rootWord: String = "Test"
     @State private var newWord: String = ""
     @State private var addedWords: [String] = [String]()
+    @State private var score: Int = 0
     
     @State private var errorTitle: String = ""
     @State private var errorMessage: String = ""
@@ -31,8 +32,16 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                
+                Spacer()
+                Text("Score: \(score)")
             }
             .navigationBarTitle(rootWord)
+            .navigationBarItems(trailing:
+                Button(action: startGame) {
+                    Text("Reset Word")
+                }
+            )
             .onAppear(perform: {
                 startGame()
             })
@@ -43,6 +52,7 @@ struct ContentView: View {
                     dismissButton: .default(Text("OK")))
             })
         }
+        
     }
     
     func addWord() {
@@ -57,7 +67,7 @@ struct ContentView: View {
         }
         
         guard isOriginal(word: wordToAdd) else {
-            wordError(title: "Word has been added already", message: "Please be more original")
+            wordError(title: "Word is not original", message: "Cannot use word already in the list or the root word")
             return
         }
         
@@ -71,12 +81,22 @@ struct ContentView: View {
             return
         }
         
+        guard isValidLength(word: wordToAdd) else {
+            wordError(title: "This word is 2 letters or shorter", message: "Use words longer than 2 letters")
+            return
+        }
+        
+        // calculate score from new word
+        let wordScore: Int = wordToAdd.count + 2
+        self.score += wordScore
+        
         self.addedWords.insert(wordToAdd, at: 0)
         self.newWord = ""
     }
     
     func isOriginal(word: String) -> Bool {
-        return !self.addedWords.contains(word)
+        // original words are not the same as the root word and not in the list of added words
+        return !self.addedWords.contains(word) && !(self.rootWord == word)
     }
     
     func isPossibleCombo(word: String) -> Bool {
@@ -91,6 +111,14 @@ struct ContentView: View {
             } else {
                 return false
             }
+        }
+        
+        return true
+    }
+    
+    func isValidLength(word: String) -> Bool {
+        if word.count < 3 {
+            return false
         }
         
         return true
@@ -122,6 +150,7 @@ struct ContentView: View {
         }
         
         // somewhere, something broke. fatalerror ends the app
+        // this can be used when something "impossible" has happened
         fatalError("Could not load start.txt from app bundle")
     }
     
