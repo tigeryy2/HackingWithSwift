@@ -13,6 +13,11 @@
 		47EAF5F626DB162000CFF857 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47EAF5F526DB162000CFF857 /* Preview Assets.xcassets */; };
 		47EAF5FE26DB1EF700CFF857 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF5FD26DB1EF700CFF857 /* AnimationView.swift */; };
 		47EAF60026DB255200CFF857 /* AnimationView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF5FF26DB255200CFF857 /* AnimationView2.swift */; };
+		47EAF60226DC675700CFF857 /* AnimationView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF60126DC675700CFF857 /* AnimationView3.swift */; };
+		47EAF60426DC697D00CFF857 /* AnimationView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF60326DC697D00CFF857 /* AnimationView4.swift */; };
+		47EAF60626DC6BF000CFF857 /* AnimationView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF60526DC6BF000CFF857 /* AnimationView5.swift */; };
+		47EAF60826DC6CB300CFF857 /* AnimationView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF60726DC6CB300CFF857 /* AnimationView6.swift */; };
+		47EAF60A26DC724F00CFF857 /* AnimationView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47EAF60926DC724F00CFF857 /* AnimationView7.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		47EAF5F726DB162000CFF857 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		47EAF5FD26DB1EF700CFF857 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		47EAF5FF26DB255200CFF857 /* AnimationView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView2.swift; sourceTree = "<group>"; };
+		47EAF60126DC675700CFF857 /* AnimationView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView3.swift; sourceTree = "<group>"; };
+		47EAF60326DC697D00CFF857 /* AnimationView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView4.swift; sourceTree = "<group>"; };
+		47EAF60526DC6BF000CFF857 /* AnimationView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView5.swift; sourceTree = "<group>"; };
+		47EAF60726DC6CB300CFF857 /* AnimationView6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView6.swift; sourceTree = "<group>"; };
+		47EAF60926DC724F00CFF857 /* AnimationView7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView7.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 				47EAF5F026DB161E00CFF857 /* ContentView.swift */,
 				47EAF5FD26DB1EF700CFF857 /* AnimationView.swift */,
 				47EAF5FF26DB255200CFF857 /* AnimationView2.swift */,
+				47EAF60126DC675700CFF857 /* AnimationView3.swift */,
+				47EAF60326DC697D00CFF857 /* AnimationView4.swift */,
+				47EAF60526DC6BF000CFF857 /* AnimationView5.swift */,
+				47EAF60726DC6CB300CFF857 /* AnimationView6.swift */,
+				47EAF60926DC724F00CFF857 /* AnimationView7.swift */,
 				47EAF5F226DB162000CFF857 /* Assets.xcassets */,
 				47EAF5F726DB162000CFF857 /* Info.plist */,
 				47EAF5F426DB162000CFF857 /* Preview Content */,
@@ -144,10 +159,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47EAF60826DC6CB300CFF857 /* AnimationView6.swift in Sources */,
 				47EAF60026DB255200CFF857 /* AnimationView2.swift in Sources */,
 				47EAF5FE26DB1EF700CFF857 /* AnimationView.swift in Sources */,
 				47EAF5F126DB161E00CFF857 /* ContentView.swift in Sources */,
 				47EAF5EF26DB161E00CFF857 /* AnimationsApp.swift in Sources */,
+				47EAF60426DC697D00CFF857 /* AnimationView4.swift in Sources */,
+				47EAF60A26DC724F00CFF857 /* AnimationView7.swift in Sources */,
+				47EAF60226DC675700CFF857 /* AnimationView3.swift in Sources */,
+				47EAF60626DC6BF000CFF857 /* AnimationView5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
