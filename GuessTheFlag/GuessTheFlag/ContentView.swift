@@ -95,6 +95,20 @@ struct ContentView: View {
                 That's the flag of \(countries[number])
                 """
             score -= 1
+            
+            // for wrong 2 flags, fade to 0% opacity
+            for index in 0..<3 {
+                if index != randomCountry {
+                    withAnimation(.easeOut(duration: 2)) {
+                        self.flagOpacityAmount[index] = 0.0
+                    }
+                    
+                    withAnimation(.easeInOut(duration: 0.5)) {
+                        // trigger flag rotation animation
+                        self.flagAnimationAmount[index] += 360
+                    }
+                }
+            }
         }
         
         // trigger alert after flag is tapped
