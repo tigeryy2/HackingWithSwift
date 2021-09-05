@@ -11,6 +11,7 @@ struct SettingsView: View {
     @Binding var tableLowerBound: Int
     @Binding var tableHigherBound: Int
     @Binding var numberQuestions: Int
+    @Binding var highScore: Int
     
     @State public var startButtonAction: (() -> Void)
     
@@ -48,14 +49,22 @@ struct SettingsView: View {
                     .labelsHidden()
                 }
                 
-                Button(action: {
-                    startButtonAction()
-                }) {
-                    Image(systemName: "multiply.square")
-                        .renderingMode(.original)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding()
-                        .font(.system(size: 50.0, weight: .bold))
+                Section(header: Text("Start Game?")) {
+                    Button(action: {
+                        startButtonAction()
+                    }) {
+                        Image(systemName: "multiply.square")
+                            .renderingMode(.original)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding()
+                            .font(.system(size: 50.0, weight: .bold))
+                    }
+                }
+                
+                Section(header: Text("High Score:")) {
+                    Text("\(highScore)")
+                        .frame(maxWidth: .infinity)
+                        .font(.largeTitle)
                 }
             }
             .navigationBarTitle(Text("Settings"), displayMode: .inline)
@@ -69,7 +78,8 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(
             tableLowerBound: .constant(1),
             tableHigherBound: .constant(6),
-            numberQuestions: .constant(20)) {
+            numberQuestions: .constant(20),
+            highScore: .constant(0)) {
             print("Testing...")
         }
     }

@@ -17,6 +17,7 @@ struct ContentView: View {
     // max number of questions to ask
     @State private var numberQuestions: Int = 10
     @State private var questions: [Question] = [Question]()
+    @State private var highScore: Int = 0
         
     var body: some View {
         if showingSettings {
@@ -24,12 +25,15 @@ struct ContentView: View {
                 SettingsView(
                     tableLowerBound: self.$tableLowerBound,
                     tableHigherBound: self.$tableHigherBound,
-                    numberQuestions: self.$numberQuestions) {
+                    numberQuestions: self.$numberQuestions,
+                    highScore: self.$highScore) {
                     // first, generate questions
                     questions = Question.generateQuestions(lowerBound: tableLowerBound + 1, higherBound: tableHigherBound + 1)
                     
                     // start the game
-                    showingSettings.toggle()
+                    withAnimation {
+                        showingSettings.toggle()
+                    }
                 }
             }
         } else {
@@ -37,7 +41,8 @@ struct ContentView: View {
                 QuestionView(
                     showingSettings: self.$showingSettings,
                     questions: self.$questions,
-                    numberQuestions: self.$numberQuestions
+                    numberQuestions: self.$numberQuestions,
+                    highScore: self.$highScore
                 )
             }
         }

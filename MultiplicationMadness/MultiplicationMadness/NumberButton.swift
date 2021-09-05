@@ -9,18 +9,19 @@ import SwiftUI
 
 struct NumberButton: View {
     let buttonText: String
+    @Binding var buttonColor: Color
     
     @State private var animationAmount: CGFloat = 1
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                .stroke(Color.green, lineWidth: 5)
+                .stroke(buttonColor, lineWidth: 5)
                 .frame(maxWidth: 200, maxHeight: 100)
                 .shadow(radius: 5)
                 .overlay(
                     RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
-                        .stroke(Color.green)
+                        .stroke(buttonColor)
                         .scaleEffect(((animationAmount - 1) / 4) + 1)
                         .opacity(Double(2 - animationAmount))
                         .animation(
@@ -41,7 +42,8 @@ struct NumberButton: View {
 }
 
 struct NumberButton_Previews: PreviewProvider {
+    @State static private var buttonColor = Color.green
     static var previews: some View {
-        NumberButton(buttonText: "12")
+        NumberButton(buttonText: "12", buttonColor: self.$buttonColor)
     }
 }
