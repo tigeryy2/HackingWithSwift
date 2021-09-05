@@ -54,10 +54,11 @@ struct SettingsView: View {
                         startButtonAction()
                     }) {
                         Image(systemName: "multiply.square")
-                            .renderingMode(.original)
+                            .renderingMode(.template)
                             .frame(maxWidth: .infinity, alignment: .center)
                             .padding()
                             .font(.system(size: 50.0, weight: .bold))
+                            .foregroundColor(.primary)
                     }
                 }
                 
@@ -68,6 +69,7 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle(Text("Settings"), displayMode: .inline)
+            .foregroundColor(.primary)
         }
         
     }

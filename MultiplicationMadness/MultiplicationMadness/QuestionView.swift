@@ -30,17 +30,17 @@ struct QuestionView: View {
             HStack {
                 // the _ x _ question
                 Image(systemName: "\(questions[currentQuestion].multiplicand).circle")
-                    .renderingMode(.original)
+                    .renderingMode(.template)
                     .padding()
                     .font(.system(size: 50.0, weight: .bold))
                     .opacity(questionFadeOut ? 0 : 1)
                     .animation(.easeOut(duration: 0.25))
                 Image(systemName: "multiply")
-                    .renderingMode(.original)
+                    .renderingMode(.template)
                     .padding()
                     .font(.system(size: 50.0, weight: .bold))
                 Image(systemName: "\(questions[currentQuestion].multiplier).circle")
-                    .renderingMode(.original)
+                    .renderingMode(.template)
                     .padding()
                     .font(.system(size: 50.0, weight: .bold))
                     .opacity(questionFadeOut ? 0 : 1)
@@ -67,11 +67,13 @@ struct QuestionView: View {
                     nextQuestion()
                 }) {
                     Text("Next")
+                        .foregroundColor(.blue)
                 }
             }
             
             Text("Score: \(correctAnswers)")
         }
+        .foregroundColor(.primary)
         .transition(.opacity)
         .onAppear {
             if self.numberQuestions > self.questions.count {

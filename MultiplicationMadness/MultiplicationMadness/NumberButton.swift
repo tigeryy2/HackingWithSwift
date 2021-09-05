@@ -35,7 +35,7 @@ struct NumberButton: View {
             Text(buttonText)
                 .font(.largeTitle)
                 .bold()
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
         }
             
     }
