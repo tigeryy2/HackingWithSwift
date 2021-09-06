@@ -25,19 +25,23 @@ struct ContentView: View {
                         }
                         
                         Spacer()
-                        Text("$\(item.amount)")
+                        AmountView(amount: item.amount)
                     }
                 }
                 .onDelete(perform: removeItems)
             }
             .navigationBarTitle(Text("iExpense"))
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.showingAddExpense = true
-                }) {
-                    Image(systemName: "plus")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                }
+            .navigationBarItems(
+                trailing:
+                    HStack {
+                        EditButton()
+                        Button(action: {
+                            self.showingAddExpense = true
+                        }) {
+                            Image(systemName: "plus")
+                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        }
+                    }
             )
         }
         .sheet(isPresented: $showingAddExpense) {

@@ -14,6 +14,7 @@
 		47FAE79C26E69A0A006CDE4A /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAE79B26E69A0A006CDE4A /* ExpenseItem.swift */; };
 		47FAE79E26E69A68006CDE4A /* Expenses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAE79D26E69A68006CDE4A /* Expenses.swift */; };
 		47FAE7A026E69E0E006CDE4A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAE79F26E69E0E006CDE4A /* AddView.swift */; };
+		47FAE7A226E6C135006CDE4A /* AmountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FAE7A126E6C135006CDE4A /* AmountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		47FAE79B26E69A0A006CDE4A /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		47FAE79D26E69A68006CDE4A /* Expenses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expenses.swift; sourceTree = "<group>"; };
 		47FAE79F26E69E0E006CDE4A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		47FAE7A126E6C135006CDE4A /* AmountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				47FAE79B26E69A0A006CDE4A /* ExpenseItem.swift */,
 				47FAE79F26E69E0E006CDE4A /* AddView.swift */,
 				47FAE79D26E69A68006CDE4A /* Expenses.swift */,
+				47FAE7A126E6C135006CDE4A /* AmountView.swift */,
 				47FAE79026E57120006CDE4A /* Assets.xcassets */,
 				47FAE79526E57120006CDE4A /* Info.plist */,
 				47FAE79226E57120006CDE4A /* Preview Content */,
@@ -149,6 +152,7 @@
 			files = (
 				47FAE79E26E69A68006CDE4A /* Expenses.swift in Sources */,
 				47FAE78F26E5711E006CDE4A /* ContentView.swift in Sources */,
+				47FAE7A226E6C135006CDE4A /* AmountView.swift in Sources */,
 				47FAE7A026E69E0E006CDE4A /* AddView.swift in Sources */,
 				47FAE79C26E69A0A006CDE4A /* ExpenseItem.swift in Sources */,
 				47FAE78D26E5711E006CDE4A /* iExpenseApp.swift in Sources */,

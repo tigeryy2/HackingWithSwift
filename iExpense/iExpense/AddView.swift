@@ -20,6 +20,7 @@ struct AddView: View {
     @State private var name: String = ""
     @State private var type: expenseType = .personal
     @State private var amount: String = ""
+    @State private var showingValidationAlert: Bool = false
     
     var body: some View {
         NavigationView {
@@ -41,8 +42,14 @@ struct AddView: View {
                     self.expenses.items.append(item)
                     // close the sheet
                     self.presentationMode.wrappedValue.dismiss()
+                } else {
+                    // data validation failed..
+                    showingValidationAlert = true
                 }
             })
+        }
+        .alert(isPresented: $showingValidationAlert) {
+            Alert(title: Text("Invalid Data"), message: Text("Check your input, amount must be an integer!"), dismissButton: .cancel())
         }
     }
 }
