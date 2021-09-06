@@ -7,22 +7,46 @@
 
 import SwiftUI
 
-struct SecondView: View {
-    var body: some View {
-        Text("Second View")
-    }
-}
-
 struct ContentView: View {
-    @State private var showingSheet = false
-
+    @ObservedObject var expenses = Expenses()
+    @State private var showingAddExpense = false
+    
     var body: some View {
-        Button("Show Sheet") {
-            self.showingSheet.toggle()
+        NavigationView {
+            List {
+                // since expenseItem conforms to "identifiable", no need to specify that the id should be used
+                ForEach(expenses.items) {
+                    item in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.type)
+                        }
+                        
+                        Spacer()
+                        Text("$\(item.amount)")
+                    }
+                }
+                .onDelete(perform: removeItems)
+            }
+            .navigationBarTitle(Text("iExpense"))
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.showingAddExpense = true
+                }) {
+                    Image(systemName: "plus")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                }
+            )
         }
-        .sheet(isPresented: $showingSheet) {
-            SecondView()
+        .sheet(isPresented: $showingAddExpense) {
+            AddView(expenses: self.expenses)
         }
+    }
+    
+    func removeItems(at offsetts: IndexSet) {
+        expenses.items.remove(atOffsets: offsetts)
     }
 }
 
