@@ -9,15 +9,19 @@ import SwiftUI
 
 struct MissionView: View {
     let mission: Mission
+    let missions: [Mission]
     let crewMembers: [CrewMember]
+    let astronauts: [Astronaut]
     
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
     }
     
-    init(mission: Mission, astronauts: [Astronaut]) {
+    init(mission: Mission, missions: [Mission], astronauts: [Astronaut]) {
         self.mission = mission
+        self.missions = missions
+        self.astronauts = astronauts
         
         // match crew listed in mission with astronaut listed in astronauts
         var matches = [CrewMember]()
@@ -44,18 +48,22 @@ struct MissionView: View {
                         .frame(maxWidth: geometry.size.width * 0.7)
                         .padding(.top)
                     
+                    Text("Launched \(self.mission.formattedLaunchDate)")
+                        .font(.headline)
+                    
                     Text(self.mission.description)
                         .padding()
+                        
                     ForEach(self.crewMembers, id:\.role) {
                         crewMember in
                         NavigationLink(
-                            destination: AstronautView(astronaut: crewMember.astronaut)) {
+                            destination: AstronautView(astronaut: crewMember.astronaut, astronauts: self.astronauts, allMissions: self.missions)) {
                             HStack {
                                 Image(crewMember.astronaut.id)
                                     .resizable()
                                     .frame(width: 83, height: 60)
-                                    .clipShape(Capsule())
-                                    .overlay(Capsule().stroke(Color.primary, lineWidth: 1))
+                                    .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                                    .overlay(RoundedRectangle(cornerRadius: 25).stroke((crewMember.role == "Commander") ? Color.yellow : Color.primary, lineWidth: 2))
                                 VStack(alignment: .leading) {
                                     Text(crewMember.astronaut.name)
                                         .font(.headline)
@@ -81,6 +89,6 @@ struct MissionView_Previews: PreviewProvider {
     static let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
     
     static var previews: some View {
-        MissionView(mission: missions[0], astronauts: astronauts)
+        MissionView(mission: missions[1], missions: missions, astronauts: astronauts)
     }
 }
