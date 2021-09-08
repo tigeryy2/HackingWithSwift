@@ -38,7 +38,7 @@ struct ContentView: View {
                 }
             }
             .navigationBarTitle("Moonshot")
-            .navigationBarItems(leading: Button(showingLaunchDates ? "Show Crew" : "Show Date") { self.pressedLaunchDateToggleButton()})
+            .navigationBarItems(trailing: Button(showingLaunchDates ? "Show Crew" : "Show Date") { self.pressedLaunchDateToggleButton()})
         }
     }
     
