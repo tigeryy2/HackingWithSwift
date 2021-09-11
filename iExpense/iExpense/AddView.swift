@@ -14,6 +14,7 @@ enum expenseType: String, CaseIterable {
 
 struct AddView: View {
     @ObservedObject var expenses: Expenses
+    
     // links to the view's environment, the "isPresented" from the parent
     @Environment(\.presentationMode) var presentationMode
     
