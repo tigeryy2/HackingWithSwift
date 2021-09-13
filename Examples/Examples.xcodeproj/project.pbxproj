@@ -12,6 +12,7 @@
 		4763FC1626ED62630014538B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4763FC1526ED62630014538B /* Assets.xcassets */; };
 		4763FC1926ED62630014538B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4763FC1826ED62630014538B /* Preview Assets.xcassets */; };
 		4763FC2126ED626C0014538B /* ExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC2026ED626C0014538B /* ExampleView1.swift */; };
+		4763FC2326EE5F570014538B /* ExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC2226EE5F570014538B /* ExampleView2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		4763FC1826ED62630014538B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4763FC1A26ED62630014538B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4763FC2026ED626C0014538B /* ExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView1.swift; sourceTree = "<group>"; };
+		4763FC2226EE5F570014538B /* ExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				4763FC1126ED62610014538B /* ExamplesApp.swift */,
 				4763FC1326ED62610014538B /* ContentView.swift */,
 				4763FC2026ED626C0014538B /* ExampleView1.swift */,
+				4763FC2226EE5F570014538B /* ExampleView2.swift */,
 				4763FC1526ED62630014538B /* Assets.xcassets */,
 				4763FC1A26ED62630014538B /* Info.plist */,
 				4763FC1726ED62630014538B /* Preview Content */,
@@ -143,6 +146,7 @@
 			files = (
 				4763FC2126ED626C0014538B /* ExampleView1.swift in Sources */,
 				4763FC1426ED62610014538B /* ContentView.swift in Sources */,
+				4763FC2326EE5F570014538B /* ExampleView2.swift in Sources */,
 				4763FC1226ED62610014538B /* ExamplesApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
