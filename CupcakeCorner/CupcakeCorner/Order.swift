@@ -38,8 +38,17 @@ class Order: ObservableObject, Codable {
     @Published var zip: String = ""
     
     var addressIsValid: Bool {
-        // address is valid if none of the field are empty
-        !(self.name.isEmpty || self.streetAddress.isEmpty || self.city.isEmpty || self.zip.isEmpty)
+        // invalid if any fields are empty or just whitespace
+        if (self.name.trimmingCharacters(in: .whitespaces).isEmpty || self.streetAddress.trimmingCharacters(in: .whitespaces).isEmpty || self.city.trimmingCharacters(in: .whitespaces).isEmpty || self.zip.trimmingCharacters(in: .whitespaces).isEmpty) {
+            return false
+        }
+        
+        // zip must be an int, with 5 digits (us zip)
+        if Int(self.zip) == nil  || self.zip.count != 5 {
+            return false
+        }
+        
+        return true
     }
     
     var totalCost: Double {

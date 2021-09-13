@@ -10,6 +10,7 @@ import SwiftUI
 struct CheckoutView: View {
     @ObservedObject var order: Order
     
+    @State private var confirmationAlertTitle = "Thank You!"
     @State private var confirmationAlertMessage = ""
     @State private var showingConfirmationAlert = false
     
@@ -37,7 +38,7 @@ struct CheckoutView: View {
         }
         .navigationBarTitle("Checkout", displayMode: .inline)
         .alert(isPresented: $showingConfirmationAlert) {
-            Alert(title: Text("Thank you!"), message: Text(confirmationAlertMessage), dismissButton: .default(Text("OK")))
+            Alert(title: Text(confirmationAlertTitle), message: Text(confirmationAlertMessage), dismissButton: .default(Text("OK")))
         }
     }
     
@@ -60,14 +61,24 @@ struct CheckoutView: View {
             // check that data is returned... if it is not, then we have errored
             guard let data = data else {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                
+                self.confirmationAlertTitle = "Order failed"
+                self.confirmationAlertMessage = "Your order could not be confirmed, server connection failed. Please check your internet connection."
+                self.showingConfirmationAlert = true
                 return
             }
             
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
+                
+                self.confirmationAlertTitle = "YUM, Thank You!"
                 self.confirmationAlertMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
                 self.showingConfirmationAlert = true
             } else {
                 print("Invalid response from server")
+                
+                self.confirmationAlertTitle = "Order failed"
+                self.confirmationAlertMessage = "Your order could not be confirmed, server returned bad data. Please check your internet connection."
+                self.showingConfirmationAlert = true
             }
             
         }.resume()
