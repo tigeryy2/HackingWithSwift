@@ -10,35 +10,53 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
+    @State private var showingAddBookScreen = false
+    
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
+        entity: Book.entity(),
+        sortDescriptors: [])
+    private var books: FetchedResults<Book>
+    
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        NavigationView {
+            List {
+                ForEach(books, id:\.self) {
+                    book in
+                    NavigationLink(
+                        destination: Text(book.title ?? "unknown"),
+                        label: {
+                            EmojiRatingView(rating: book.rating)
+                                .font(.largeTitle)
+                            
+                            VStack {
+                                Text(book.title ?? "meh")
+                                    .font(.headline)
+                                Text(book.author ?? "nah")
+                                    .foregroundColor(.secondary)
+                            }
+                        })
+                }
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
+                .navigationBarTitle("Bookworm")
+                .navigationBarItems(trailing: Button(action: {
+                    self.showingAddBookScreen.toggle()
+                }) {
+                    Image(systemName: "plus")
+                        .font(.title2)
+                })
+                .sheet(isPresented: $showingAddBookScreen) {
+                    // since a sheet does not have the presented view as an "ancestor", need to manually add our viewcontext to the sheet's environment
+                    AddBookView().environment(\.managedObjectContext, self.viewContext)
+                }
         }
     }
-
+    
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+            let newItem = Book(context: viewContext)
+            //newItem.timestamp = Date()
+            
             do {
                 try viewContext.save()
             } catch {
@@ -49,11 +67,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            offsets.map { books[$0] }.forEach(viewContext.delete)
+            
             do {
                 try viewContext.save()
             } catch {
