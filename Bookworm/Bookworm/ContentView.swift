@@ -13,9 +13,12 @@ struct ContentView: View {
     
     @State private var showingAddBookScreen = false
     
+    // can add multiple sort descriptors, swift will use the first one first, then others as needed to decide ties
     @FetchRequest(
         entity: Book.entity(),
-        sortDescriptors: [])
+        sortDescriptors:
+            [NSSortDescriptor(keyPath: \Book.title, ascending: true),
+             NSSortDescriptor(keyPath: \Book.author, ascending: true)])
     private var books: FetchedResults<Book>
     
     var body: some View {
@@ -24,7 +27,7 @@ struct ContentView: View {
                 ForEach(books, id:\.self) {
                     book in
                     NavigationLink(
-                        destination: Text(book.title ?? "unknown"),
+                        destination: DetailView(book: book),
                         label: {
                             EmojiRatingView(rating: book.rating)
                                 .font(.largeTitle)
@@ -37,24 +40,29 @@ struct ContentView: View {
                             }
                         })
                 }
+                .onDelete(perform: self.deleteBooks)
             }
-                .navigationBarTitle("Bookworm")
-                .navigationBarItems(trailing: Button(action: {
-                    self.showingAddBookScreen.toggle()
-                }) {
-                    Image(systemName: "plus")
-                        .font(.title2)
-                })
-                .sheet(isPresented: $showingAddBookScreen) {
-                    // since a sheet does not have the presented view as an "ancestor", need to manually add our viewcontext to the sheet's environment
-                    AddBookView().environment(\.managedObjectContext, self.viewContext)
-                }
+            .navigationBarTitle("Bookworm")
+            .navigationBarItems(trailing:
+                                    HStack {
+                                        EditButton()
+                                        Button(action: {
+                                            self.showingAddBookScreen.toggle()
+                                        }) {
+                                            Image(systemName: "plus")
+                                                .font(.title2)
+                                        }
+                                    })
+            .sheet(isPresented: $showingAddBookScreen) {
+                // since a sheet does not have the presented view as an "ancestor", need to manually add our viewcontext to the sheet's environment
+                AddBookView().environment(\.managedObjectContext, self.viewContext)
+            }
         }
     }
     
     private func addItem() {
         withAnimation {
-            let newItem = Book(context: viewContext)
+            //let newItem = Book(context: viewContext)
             //newItem.timestamp = Date()
             
             do {
@@ -68,7 +76,7 @@ struct ContentView: View {
         }
     }
     
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteBooks(offsets: IndexSet) {
         withAnimation {
             offsets.map { books[$0] }.forEach(viewContext.delete)
             
@@ -83,13 +91,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

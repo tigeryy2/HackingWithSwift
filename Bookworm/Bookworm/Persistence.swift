@@ -26,6 +26,7 @@ struct PersistenceController {
             newBook.id = UUID()
             newBook.review = "Worst book i had to \"read\" in high school"
             newBook.rating = 1
+            newBook.genre = "Horror"
         }
         
         do {

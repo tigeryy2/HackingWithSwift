@@ -17,6 +17,7 @@ struct AddBookView: View {
     @State private var review = ""
     @State private var rating: Int = 3
     
+    // a enum prob better here?
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
     
     var body: some View {
