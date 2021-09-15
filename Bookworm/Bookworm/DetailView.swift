@@ -36,6 +36,10 @@ struct DetailView: View {
                     .font(.title)
                     .foregroundColor(.secondary)
                 
+                Text(self.getDateFormatted(date: self.book.date ?? Date()))
+                    .font(.headline)
+                    .foregroundColor(.secondary)
+                
                 Text(self.book.review ?? "No review")
                     .padding()
                 
@@ -52,10 +56,14 @@ struct DetailView: View {
             Image(systemName: "trash")
         }))
         .alert(isPresented: self.$showingDeleteAlert, content: {
-            Alert(title: Text("Delete Book"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
-                self.deleteThisBook()
-            }, secondaryButton: .cancel(Text("Nah, nvm")))
+            Alert(title: Text("Delete Book"),
+                  message: Text("Are you sure?"),
+                  primaryButton: .destructive(Text("Delete")) {
+                    self.deleteThisBook()
+                  },
+                  secondaryButton: .cancel(Text("Nah, nvm")))
         })
+        // .destructive gets shown in red
     }
     
     func deleteThisBook() {
@@ -64,6 +72,15 @@ struct DetailView: View {
         try? self.viewContext.save()
         
         presentationMode.wrappedValue.dismiss()
+    }
+    
+    func getDateFormatted(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+
+        // Set Date Format
+        dateFormatter.dateFormat = "MMM dd, YYY"
+
+        return dateFormatter.string(from: date)
     }
 }
 

@@ -35,6 +35,7 @@ struct ContentView: View {
                             VStack {
                                 Text(book.title ?? "meh")
                                     .font(.headline)
+                                    .foregroundColor((book.rating == 1) ? .red : .primary)
                                 Text(book.author ?? "nah")
                                     .foregroundColor(.secondary)
                             }
@@ -56,22 +57,6 @@ struct ContentView: View {
             .sheet(isPresented: $showingAddBookScreen) {
                 // since a sheet does not have the presented view as an "ancestor", need to manually add our viewcontext to the sheet's environment
                 AddBookView().environment(\.managedObjectContext, self.viewContext)
-            }
-        }
-    }
-    
-    private func addItem() {
-        withAnimation {
-            //let newItem = Book(context: viewContext)
-            //newItem.timestamp = Date()
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }

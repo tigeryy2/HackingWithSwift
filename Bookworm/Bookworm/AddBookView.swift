@@ -48,7 +48,13 @@ struct AddBookView: View {
                         newBook.rating = Int16(self.rating)
                         newBook.genre = self.genre
                         newBook.review = self.review
-
+                        newBook.date = Date()
+                        
+                        // default genre is mystery
+                        if !self.genres.contains(self.genre) {
+                            newBook.genre = self.genres[3]
+                        }
+                        
                         try? self.viewContext.save()
                         
                         self.presentationMode.wrappedValue.dismiss()
