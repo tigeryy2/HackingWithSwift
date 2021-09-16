@@ -8,13 +8,27 @@
 import SwiftUI
 import CoreData
 
+enum Predicate: String {
+    case beginsWith = "BEGINSWITH"
+    case beginsWithNoCase = "BEGINSWITH[c]"
+    case isIn = "IN"
+    case contains = "CONTAINS"
+    case like = "like"
+}
+
 struct FilteredList<T: NSManagedObject, Content: View>: View {
     var fetchRequest: FetchRequest<T>
-    
     let content: (T) -> Content
     
-    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
-        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+    init(
+        filterKey: String,
+        filterValue: String,
+        predicate: Predicate,
+        sortDescriptors: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content) {
+        fetchRequest = FetchRequest<T>(
+            entity: T.entity(),
+            sortDescriptors: sortDescriptors,
+            predicate: NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
         self.content = content
     }
     
@@ -32,7 +46,11 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
 
 struct FilteredList_Previews: PreviewProvider {
     static var previews: some View {
-        FilteredList(filterKey: "lastName", filterValue: "A") {
+        FilteredList(
+            filterKey: "lastName",
+            filterValue: "A",
+            predicate: .beginsWith,
+            sortDescriptors: [NSSortDescriptor(keyPath: \Singer.lastName, ascending: true)]) {
             // providing the type "Singer" allows swift to infer the type (T)
             (singer: Singer) in
             Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")

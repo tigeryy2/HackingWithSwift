@@ -17,6 +17,7 @@
 		475D65E026F2E8C800E5CC0B /* Candy+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D65DC26F2E8C800E5CC0B /* Candy+CoreDataClass.swift */; };
 		475D65E126F2E8C800E5CC0B /* Candy+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D65DD26F2E8C800E5CC0B /* Candy+CoreDataProperties.swift */; };
 		475D65E426F2EA6300E5CC0B /* ExampleView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475D65E326F2EA6300E5CC0B /* ExampleView3.swift */; };
+		47BB7A6E26F3CF5300C9DBFE /* ExampleView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB7A6D26F3CF5200C9DBFE /* ExampleView4.swift */; };
 		47D82DB826F192A6000F2428 /* CoreDataProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D82DB726F192A6000F2428 /* CoreDataProjectApp.swift */; };
 		47D82DBA26F192A6000F2428 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D82DB926F192A6000F2428 /* ContentView.swift */; };
 		47D82DBC26F192A8000F2428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47D82DBB26F192A8000F2428 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		475D65DC26F2E8C800E5CC0B /* Candy+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataClass.swift"; sourceTree = "<group>"; };
 		475D65DD26F2E8C800E5CC0B /* Candy+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Candy+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		475D65E326F2EA6300E5CC0B /* ExampleView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView3.swift; sourceTree = "<group>"; };
+		47BB7A6D26F3CF5200C9DBFE /* ExampleView4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExampleView4.swift; sourceTree = "<group>"; };
 		47D82DB426F192A6000F2428 /* CoreDataProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47D82DB726F192A6000F2428 /* CoreDataProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataProjectApp.swift; sourceTree = "<group>"; };
 		47D82DB926F192A6000F2428 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				475D65D226F29C2600E5CC0B /* ExampleView.swift */,
 				475D65D026F29B7700E5CC0B /* ExampleView2.swift */,
 				475D65E326F2EA6300E5CC0B /* ExampleView3.swift */,
+				47BB7A6D26F3CF5200C9DBFE /* ExampleView4.swift */,
 				475D65E226F2E8D800E5CC0B /* Entities */,
 				47D82DBB26F192A8000F2428 /* Assets.xcassets */,
 				47D82DC026F192A8000F2428 /* Persistence.swift */,
@@ -200,6 +203,7 @@
 				475D65D726F29DFF00E5CC0B /* Singer+CoreDataProperties.swift in Sources */,
 				475D65D926F29F2100E5CC0B /* FilteredList.swift in Sources */,
 				475D65D126F29B7700E5CC0B /* ExampleView2.swift in Sources */,
+				47BB7A6E26F3CF5300C9DBFE /* ExampleView4.swift in Sources */,
 				47D82DD126F19591000F2428 /* Movie+CoreDataClass.swift in Sources */,
 				47D82DD226F19591000F2428 /* Movie+CoreDataProperties.swift in Sources */,
 				47D82DB826F192A6000F2428 /* CoreDataProjectApp.swift in Sources */,

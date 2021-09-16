@@ -9,12 +9,17 @@ import SwiftUI
 
 struct ExampleView3: View {
     @Environment(\.managedObjectContext) var objectContext
-    @State private var lastNameFilter = "A"
+    @State private var lastNameFilter = "d"
+    @State private var predicate: Predicate = .contains
     
     var body: some View {
         VStack {
             // list of matching singers
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            FilteredList(
+                filterKey: "lastName",
+                filterValue: self.lastNameFilter,
+                predicate: self.predicate,
+                sortDescriptors: [NSSortDescriptor(keyPath: \Singer.lastName, ascending: true)]) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
             
@@ -31,15 +36,21 @@ struct ExampleView3: View {
                 adele.firstName = "Adele"
                 adele.lastName = "Adkins"
                 
+                let notAdele = Singer(context: self.objectContext)
+                notAdele.firstName = "Nodele"
+                notAdele.lastName = "Akins"
+                
                 try? self.objectContext.save()
             }
             
-            Button("Show A") {
-                self.lastNameFilter = "A"
+            Button("Show lastName contains dele") {
+                self.lastNameFilter = "d"
+                self.predicate = .contains
             }
             
             Button("Show S") {
                 self.lastNameFilter = "S"
+                self.predicate = .beginsWith
             }
         }
     }
