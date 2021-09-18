@@ -13,7 +13,7 @@ struct UsersView: View {
     var body: some View {
         List(self.users, id:\.id) {
             user in
-            NavigationLink(destination: UserView(user: user)) {
+            NavigationLink(destination: UserView(user: user, users: users)) {
                 VStack {
                     HStack {
                         Text("\(user.name),")
