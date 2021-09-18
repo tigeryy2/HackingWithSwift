@@ -31,34 +31,14 @@ struct UsersView: View {
             }
         }
         .navigationBarTitle(Text("Users"))
-        .onAppear(perform: loadUsers)
+        .onAppear(perform: {
+                    User.loadUsers(saveUsers: {
+                        (decodedData: [User]) in
+                        self.users = decodedData
+                    })
+        })
     }
     
-    func loadUsers() {
-        // force unwrap, as we know this url is valid
-        let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json")!
-        let request = URLRequest(url: url)
-        
-        // trigger datatask on seperate thread, to request the json
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                // check that data was recieved
-                if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                    // we have good data – go back to the main thread
-                    DispatchQueue.main.async {
-                        // update our UI
-                        self.users = decodedResponse
-                    }
-                    
-                    // everything is good, exit
-                    return
-                }
-            }
-            
-            // if we're still here it means there was a problem
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
-    }
 }
 
 
