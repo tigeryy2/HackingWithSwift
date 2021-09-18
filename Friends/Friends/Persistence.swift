@@ -13,10 +13,24 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
         }
+        
+        let newUser = UserEntity(context: viewContext)
+        newUser.id = "id0012345"
+        newUser.name = "Tiger Yang"
+        newUser.age = 23
+        newUser.company = "Silabs"
+        newUser.email = "nicetry@maybeGmail.com"
+        newUser.isActive = true
+        newUser.address = "420 Somewhere Dr. Hopefully Austin, TX 77777"
+        newUser.about = "tbd..."
+        newUser.registered = "1998-02-11"
+        newUser.tags = "asdfb"
+        
         do {
             try viewContext.save()
         } catch {
