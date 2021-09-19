@@ -13,6 +13,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
@@ -46,6 +47,7 @@ struct PersistenceController {
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "Friends")
+        
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
