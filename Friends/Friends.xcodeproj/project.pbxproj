@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47434DC826F6A34100673D35 /* FriendEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47434DC426F6A34100673D35 /* FriendEntity+CoreDataClass.swift */; };
+		47434DC926F6A34100673D35 /* FriendEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47434DC526F6A34100673D35 /* FriendEntity+CoreDataProperties.swift */; };
+		47434DCA26F6A34100673D35 /* UserEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47434DC626F6A34100673D35 /* UserEntity+CoreDataClass.swift */; };
+		47434DCB26F6A34100673D35 /* UserEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47434DC726F6A34100673D35 /* UserEntity+CoreDataProperties.swift */; };
+		47A1B6B826F695F3001AA11C /* FilteredList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A1B6B726F695F3001AA11C /* FilteredList.swift */; };
 		47BB7A7C26F5762D00C9DBFE /* FriendsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB7A7B26F5762D00C9DBFE /* FriendsApp.swift */; };
 		47BB7A7E26F5762D00C9DBFE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BB7A7D26F5762D00C9DBFE /* ContentView.swift */; };
 		47BB7A8026F5762F00C9DBFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47BB7A7F26F5762F00C9DBFE /* Assets.xcassets */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47434DC426F6A34100673D35 /* FriendEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		47434DC526F6A34100673D35 /* FriendEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		47434DC626F6A34100673D35 /* UserEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		47434DC726F6A34100673D35 /* UserEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		47A1B6B726F695F3001AA11C /* FilteredList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredList.swift; sourceTree = "<group>"; };
 		47BB7A7826F5762D00C9DBFE /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47BB7A7B26F5762D00C9DBFE /* FriendsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsApp.swift; sourceTree = "<group>"; };
 		47BB7A7D26F5762D00C9DBFE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -43,6 +53,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47A1B6C126F699B8001AA11C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				47434DC426F6A34100673D35 /* FriendEntity+CoreDataClass.swift */,
+				47434DC526F6A34100673D35 /* FriendEntity+CoreDataProperties.swift */,
+				47434DC626F6A34100673D35 /* UserEntity+CoreDataClass.swift */,
+				47434DC726F6A34100673D35 /* UserEntity+CoreDataProperties.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		47BB7A6F26F5762D00C9DBFE = {
 			isa = PBXGroup;
 			children = (
@@ -65,8 +86,10 @@
 				47BB7A7B26F5762D00C9DBFE /* FriendsApp.swift */,
 				47BB7A7D26F5762D00C9DBFE /* ContentView.swift */,
 				47BB7A8F26F5770300C9DBFE /* UsersView.swift */,
+				47A1B6B726F695F3001AA11C /* FilteredList.swift */,
 				47BB7A9326F595EF00C9DBFE /* UserView.swift */,
 				47BB7A9126F578CF00C9DBFE /* User.swift */,
+				47A1B6C126F699B8001AA11C /* Entity */,
 				47BB7A7F26F5762F00C9DBFE /* Assets.xcassets */,
 				47BB7A8426F5762F00C9DBFE /* Persistence.swift */,
 				47BB7A8926F5762F00C9DBFE /* Info.plist */,
@@ -153,12 +176,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A1B6B826F695F3001AA11C /* FilteredList.swift in Sources */,
+				47434DCB26F6A34100673D35 /* UserEntity+CoreDataProperties.swift in Sources */,
 				47BB7A8526F5762F00C9DBFE /* Persistence.swift in Sources */,
 				47BB7A7E26F5762D00C9DBFE /* ContentView.swift in Sources */,
+				47434DC826F6A34100673D35 /* FriendEntity+CoreDataClass.swift in Sources */,
 				47BB7A9026F5770300C9DBFE /* UsersView.swift in Sources */,
+				47434DCA26F6A34100673D35 /* UserEntity+CoreDataClass.swift in Sources */,
 				47BB7A7C26F5762D00C9DBFE /* FriendsApp.swift in Sources */,
 				47BB7A9226F578CF00C9DBFE /* User.swift in Sources */,
 				47BB7A8826F5762F00C9DBFE /* Friends.xcdatamodeld in Sources */,
+				47434DC926F6A34100673D35 /* FriendEntity+CoreDataProperties.swift in Sources */,
 				47BB7A9426F595EF00C9DBFE /* UserView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

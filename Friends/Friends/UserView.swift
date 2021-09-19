@@ -29,7 +29,7 @@ struct UserView: View {
             }
         }
         
-        self.friends = friendMatches
+        self.friends = users
     }
     
     var body: some View {

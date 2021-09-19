@@ -53,7 +53,6 @@ struct User: Decodable {
             print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
         }.resume()
     }
-    
 }
 
 

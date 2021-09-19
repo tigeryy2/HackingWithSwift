@@ -19,9 +19,19 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             //UsersView()
-            List(self.users, id:\.id) {
-                user in
-                Text("\(user.name!)")
+            VStack {
+                Text("Test")
+                    .onAppear(perform: {
+                        self.loadUsersFromJson()
+                    })
+                FilteredList(
+                    filterKey: "name",
+                    filterValue: "T",
+                    predicate: .beginsWithNoCase,
+                    sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
+                    (user: UserEntity) in
+                    Text("\(user.name!)")
+                }
             }
         }
     }
@@ -54,6 +64,49 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+    
+    private func loadUsersFromJson() {
+        // loads users from json into CoreData
+        User.loadUsers(saveUsers: {
+            (decodedUsers: [User]) in
+            self.saveUsers(users: decodedUsers)
+        })
+    }
+    
+    private func saveUsers(users: [User]) {
+        // saves the provided list of users to coredata
+        for user in users {
+            let newUser = UserEntity(context: viewContext)
+            newUser.about = user.about
+            newUser.address = user.address
+            newUser.age = Int16(user.age)
+            newUser.name = user.name
+            newUser.company = user.company
+            newUser.email = user.email
+            newUser.id = user.id
+            newUser.isActive = user.isActive
+            newUser.name = user.name
+            newUser.registered = user.registered
+            
+            for friend in user.friends {
+                let newFriend = FriendEntity(context: viewContext)
+                newFriend.id = friend.id
+                newFriend.name = friend.name
+                
+                // link to user entity
+                newUser.addToFriends(newFriend)
+            }
+        }
+
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }
