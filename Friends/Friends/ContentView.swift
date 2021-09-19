@@ -10,37 +10,40 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.age, ascending: true)],
         animation: .default)
     private var users: FetchedResults<UserEntity>
-
+    
     var body: some View {
         NavigationView {
-            //UsersView()
-            VStack {
-                Text("Test")
-                    .onAppear(perform: {
-                        self.loadUsersFromJson()
-                    })
-                FilteredList(
-                    filterKey: "name",
-                    filterValue: "T",
-                    predicate: .beginsWithNoCase,
-                    sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
-                    (user: UserEntity) in
-                    Text("\(user.name!)")
-                }
-            }
+            UsersView()
+                .onAppear(perform: {
+                    self.loadUsersFromJson()
+                })
+            //            VStack {
+            //                Text("Test")
+            //                    .onAppear(perform: {
+            //                        self.loadUsersFromJson()
+            //                    })
+            //                FilteredList(
+            //                    filterKey: "name",
+            //                    filterValue: "T",
+            //                    predicate: .beginsWithNoCase,
+            //                    sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
+            //                    (user: UserEntity) in
+            //                    Text("\(user.wrappedName)")
+            //                }
+            //            }
         }
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = UserEntity(context: viewContext)
             newItem.name = "somePerson"
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -51,11 +54,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { users[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -99,7 +102,7 @@ struct ContentView: View {
                 newUser.addToFriends(newFriend)
             }
         }
-
+        
         do {
             try viewContext.save()
         } catch {
