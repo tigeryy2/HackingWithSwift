@@ -20,6 +20,11 @@
         <attribute name="registered" optional="YES" attributeType="String"/>
         <attribute name="tags" optional="YES" attributeType="String"/>
         <relationship name="friends" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="FriendEntity" inverseName="user" inverseEntity="FriendEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
         <element name="FriendEntity" positionX="-54" positionY="0" width="128" height="74"/>
