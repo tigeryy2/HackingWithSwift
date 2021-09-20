@@ -15,9 +15,7 @@ struct UsersView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.age, ascending: true)],
         animation: .default)
     private var fetchedUsers: FetchedResults<UserEntity>
-    
-    //@State private var users: [User] = [User]()
-    
+        
     var body: some View {
         FilteredList(
             filterKey: "name",
@@ -25,7 +23,7 @@ struct UsersView: View {
             predicate: .beginsWithNoCase,
             sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
             (user: UserEntity) in
-            NavigationLink(destination: Text("Hi")) {
+            NavigationLink(destination: UserView(user: user)) {
                 VStack {
                     HStack {
                         Text("\(user.wrappedName),")

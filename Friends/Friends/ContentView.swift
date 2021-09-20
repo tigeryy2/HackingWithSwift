@@ -22,20 +22,6 @@ struct ContentView: View {
                 .onAppear(perform: {
                     self.loadUsersFromJson()
                 })
-            //            VStack {
-            //                Text("Test")
-            //                    .onAppear(perform: {
-            //                        self.loadUsersFromJson()
-            //                    })
-            //                FilteredList(
-            //                    filterKey: "name",
-            //                    filterValue: "T",
-            //                    predicate: .beginsWithNoCase,
-            //                    sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
-            //                    (user: UserEntity) in
-            //                    Text("\(user.wrappedName)")
-            //                }
-            //            }
         }
     }
     
