@@ -22,10 +22,8 @@ struct UserView: View {
     init(user: UserEntity) {
         self.user = user
         
-        // match id for friends of this user, to id in users
+        // accumulate list of user IDs for the friends, so we can filter for friends only
         self.friendIds = [String]()
-        
-        // for each friend, find the coresponding user
         for friend in user.friendArray {
             friendIds.append(friend.wrappedId)
         }
@@ -53,6 +51,7 @@ struct UserView: View {
             }
             .padding()
             
+            // filtered list, that filters for friend ID list
             FriendListView(friendIds: self.friendIds)
             
             Spacer()

@@ -17,20 +17,24 @@ struct ContentView: View {
         animation: .default)
     private var users: FetchedResults<UserEntity>
     
+    // pattern for the filter predicate "search"
     @State private var searchString: String = ""
     
     var body: some View {
         
         NavigationView {
             VStack {
+                // User Search Bar
                 TextField("Search", text: self.$searchString)
                     .padding()
                     .background(
-                        Rectangle()
+                        RoundedRectangle(cornerRadius: 5.0)
                             .stroke()
                             .foregroundColor(.secondary)
                             .opacity(0.5)
                     )
+                    .shadow(radius: 5)
+                
                 UsersView(searchString: self.$searchString)
                     .onAppear(perform: {
                         // load/reload users to coredata from json on every app load

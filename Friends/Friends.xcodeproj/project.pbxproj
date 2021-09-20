@@ -55,7 +55,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		47A1B6C126F699B8001AA11C /* Entity */ = {
+		47A1B6C126F699B8001AA11C /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				47434DC426F6A34100673D35 /* FriendEntity+CoreDataClass.swift */,
@@ -63,7 +63,7 @@
 				47434DC626F6A34100673D35 /* UserEntity+CoreDataClass.swift */,
 				47434DC726F6A34100673D35 /* UserEntity+CoreDataProperties.swift */,
 			);
-			path = Entity;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		47BB7A6F26F5762D00C9DBFE = {
@@ -92,7 +92,7 @@
 				47BB7A9326F595EF00C9DBFE /* UserView.swift */,
 				47517C9A26F82B0800507525 /* FriendListView.swift */,
 				47BB7A9126F578CF00C9DBFE /* User.swift */,
-				47A1B6C126F699B8001AA11C /* Entity */,
+				47A1B6C126F699B8001AA11C /* Model */,
 				47BB7A7F26F5762F00C9DBFE /* Assets.xcassets */,
 				47BB7A8426F5762F00C9DBFE /* Persistence.swift */,
 				47BB7A8926F5762F00C9DBFE /* Info.plist */,

@@ -12,22 +12,15 @@ struct FriendListView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     var friendRequest: FetchRequest<UserEntity>
-    var userRequest: FetchRequest<UserEntity>
     
     var fetchedFriends: FetchedResults<UserEntity> {
         friendRequest.wrappedValue
     }
-    var fetchedUsers: FetchedResults<UserEntity> {
-        userRequest.wrappedValue
-    }
     
     init(friendIds: [String]) {
         self.friendRequest = FetchRequest<UserEntity>(
-            sortDescriptors: [],
+            sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)],
             predicate: NSPredicate(format: "id IN %@", friendIds))
-        
-        self.userRequest = FetchRequest<UserEntity>(
-            sortDescriptors: [])
     }
     
     var body: some View {

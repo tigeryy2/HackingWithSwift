@@ -19,12 +19,14 @@ struct UsersView: View {
     @Binding var searchString: String
     
     var body: some View {
+        // filter by name, sorting alphabetically
         FilteredList(
             filterKey: "name",
             filterValue: self.searchString,
-            predicate: (self.searchString.isEmpty) ? .noPredicate : .contains,
+            predicate: (self.searchString.isEmpty) ? .noPredicate : .beginsWith,
             sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
             (user: UserEntity) in
+            
             NavigationLink(destination: UserView(user: user)) {
                 VStack {
                     HStack {

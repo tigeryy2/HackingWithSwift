@@ -29,15 +29,20 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         filterValue: String,
         predicate: Predicate,
         sortDescriptors: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content) {
-        fetchRequest = FetchRequest<T>(
+        
+        // init fetchRequest
+        self.fetchRequest = FetchRequest<T>(
             entity: T.entity(),
             sortDescriptors: sortDescriptors,
             // if "none" given, use a predicate that allows all
-            predicate: (predicate.rawValue == "none") ? NSPredicate(format: "%K LIKE[c] '*'", filterKey) : NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
+            predicate: (predicate.rawValue == "none") ? NSPredicate(format: "%K LIKE[c] '*'", filterKey) : NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue),
+            animation: .easeInOut)
+        
         self.content = content
     }
     
     // w/o the @FetchRequest, need to grab the values out of the ".wrappedValue"
+    // note, don't be an idiot and try to set the intial fetchRequest to FetchResults instead... this NEEDs to be computed value, so that it keeps updating!!
     var unwrappedValues: FetchedResults<T> {
         fetchRequest.wrappedValue
     }
@@ -46,6 +51,7 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         List(self.unwrappedValues, id: \.self) { item in
             self.content(item)
         }
+        .animation(.easeInOut)
     }
 }
 
