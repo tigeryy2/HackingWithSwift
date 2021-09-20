@@ -11,18 +11,35 @@ import CoreData
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    // sort by age
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.age, ascending: true)],
         animation: .default)
     private var users: FetchedResults<UserEntity>
     
+    @State private var searchString: String = ""
+    
     var body: some View {
+        
         NavigationView {
-            UsersView()
-                .onAppear(perform: {
-                    self.loadUsersFromJson()
-                })
+            VStack {
+                TextField("Search", text: self.$searchString)
+                    .padding()
+                    .background(
+                        Rectangle()
+                            .stroke()
+                            .foregroundColor(.secondary)
+                            .opacity(0.5)
+                    )
+                UsersView(searchString: self.$searchString)
+                    .onAppear(perform: {
+                        // load/reload users to coredata from json on every app load
+                        // duplicates will be merged by coredata
+                        self.loadUsersFromJson()
+                    })
+            }
         }
+        
     }
     
     private func addItem() {
@@ -67,6 +84,7 @@ struct ContentView: View {
     private func saveUsers(users: [User]) {
         // saves the provided list of users to coredata
         for user in users {
+            // for each user in the decoded json struct, save each attribute to the coredata entity
             let newUser = UserEntity(context: viewContext)
             newUser.about = user.about
             newUser.address = user.address
@@ -99,13 +117,6 @@ struct ContentView: View {
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

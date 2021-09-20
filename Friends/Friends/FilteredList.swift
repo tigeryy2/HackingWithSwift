@@ -14,6 +14,10 @@ enum Predicate: String {
     case isIn = "IN"
     case contains = "CONTAINS"
     case like = "like"
+    case matches = "MATCHES"
+    
+    // not a swift predicate, use to show all
+    case noPredicate = "none"
 }
 
 struct FilteredList<T: NSManagedObject, Content: View>: View {
@@ -28,7 +32,8 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         fetchRequest = FetchRequest<T>(
             entity: T.entity(),
             sortDescriptors: sortDescriptors,
-            predicate: NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
+            // if "none" given, use a predicate that allows all
+            predicate: (predicate.rawValue == "none") ? NSPredicate(format: "%K LIKE[c] '*'", filterKey) : NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
         self.content = content
     }
     
@@ -49,7 +54,7 @@ struct FilteredList_Previews: PreviewProvider {
         FilteredList(
             filterKey: "name",
             filterValue: "T",
-            predicate: .beginsWithNoCase,
+            predicate: .matches,
             sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
             (user: UserEntity) in
             Text("\(user.name!)")

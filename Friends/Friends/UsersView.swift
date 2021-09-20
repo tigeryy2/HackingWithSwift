@@ -16,11 +16,13 @@ struct UsersView: View {
         animation: .default)
     private var fetchedUsers: FetchedResults<UserEntity>
         
+    @Binding var searchString: String
+    
     var body: some View {
         FilteredList(
             filterKey: "name",
-            filterValue: "T",
-            predicate: .beginsWithNoCase,
+            filterValue: self.searchString,
+            predicate: (self.searchString.isEmpty) ? .noPredicate : .contains,
             sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
             (user: UserEntity) in
             NavigationLink(destination: UserView(user: user)) {
@@ -47,9 +49,11 @@ struct UsersView: View {
 
 
 struct UsersView_Previews: PreviewProvider {
+    @State static var searchString = "T"
+    
     static var previews: some View {
         NavigationView {
-            UsersView()
+            UsersView(searchString: self.$searchString)
         }
     }
 }
