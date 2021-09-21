@@ -23,7 +23,7 @@ struct UsersView: View {
         FilteredList(
             filterKey: "name",
             filterValue: self.searchString,
-            predicate: (self.searchString.isEmpty) ? .noPredicate : .beginsWith,
+            predicate: (self.searchString.isEmpty) ? .noPredicate : .contains,
             sortDescriptors: [NSSortDescriptor(keyPath: \UserEntity.name, ascending: true)]) {
             (user: UserEntity) in
             
