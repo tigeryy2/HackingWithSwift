@@ -24,10 +24,10 @@ struct FriendListView: View {
     }
     
     var body: some View {
-        VStack {
-            List(self.fetchedFriends, id:\.wrappedId) {
-                item in
-                Text(item.wrappedName)
+        List(self.fetchedFriends, id:\.wrappedId) {
+            user in
+            NavigationLink(destination: UserView(user: user)) {
+                Text(user.wrappedName)
             }
         }
     }
