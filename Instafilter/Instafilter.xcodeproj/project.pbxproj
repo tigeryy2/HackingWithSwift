@@ -7,35 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		47517CBD26FA5EFB00507525 /* ExampleView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CBC26FA5EFB00507525 /* ExampleView5.swift */; };
-		47517CBF26FA660800507525 /* ExampleView6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CBE26FA660800507525 /* ExampleView6.swift */; };
-		4763FC1226ED62610014538B /* ExamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC1126ED62610014538B /* ExamplesApp.swift */; };
-		4763FC1426ED62610014538B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC1326ED62610014538B /* ContentView.swift */; };
-		4763FC1626ED62630014538B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4763FC1526ED62630014538B /* Assets.xcassets */; };
-		4763FC1926ED62630014538B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4763FC1826ED62630014538B /* Preview Assets.xcassets */; };
-		4763FC2126ED626C0014538B /* ExampleView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC2026ED626C0014538B /* ExampleView1.swift */; };
-		4763FC2326EE5F570014538B /* ExampleView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4763FC2226EE5F570014538B /* ExampleView2.swift */; };
-		47DC064226EFF744004457AB /* ExampleView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC064126EFF744004457AB /* ExampleView3.swift */; };
-		47DC064426F00347004457AB /* ExampleView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC064326F00347004457AB /* ExampleView4.swift */; };
+		47517CA926F99ABC00507525 /* InstafilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CA826F99ABC00507525 /* InstafilterApp.swift */; };
+		47517CAB26F99ABC00507525 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CAA26F99ABC00507525 /* ContentView.swift */; };
+		47517CAD26F99ABE00507525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47517CAC26F99ABE00507525 /* Assets.xcassets */; };
+		47517CB026F99ABE00507525 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47517CAF26F99ABE00507525 /* Preview Assets.xcassets */; };
+		47517CB226F99ABE00507525 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CB126F99ABE00507525 /* Persistence.swift */; };
+		47517CB526F99ABE00507525 /* Instafilter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47517CB326F99ABE00507525 /* Instafilter.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		47517CBC26FA5EFB00507525 /* ExampleView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView5.swift; sourceTree = "<group>"; };
-		47517CBE26FA660800507525 /* ExampleView6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView6.swift; sourceTree = "<group>"; };
-		4763FC0E26ED62610014538B /* Examples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Examples.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4763FC1126ED62610014538B /* ExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamplesApp.swift; sourceTree = "<group>"; };
-		4763FC1326ED62610014538B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4763FC1526ED62630014538B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4763FC1826ED62630014538B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		4763FC1A26ED62630014538B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4763FC2026ED626C0014538B /* ExampleView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView1.swift; sourceTree = "<group>"; };
-		4763FC2226EE5F570014538B /* ExampleView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView2.swift; sourceTree = "<group>"; };
-		47DC064126EFF744004457AB /* ExampleView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView3.swift; sourceTree = "<group>"; };
-		47DC064326F00347004457AB /* ExampleView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView4.swift; sourceTree = "<group>"; };
+		47517CA526F99ABC00507525 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		47517CA826F99ABC00507525 /* InstafilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstafilterApp.swift; sourceTree = "<group>"; };
+		47517CAA26F99ABC00507525 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		47517CAC26F99ABE00507525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47517CAF26F99ABE00507525 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		47517CB126F99ABE00507525 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		47517CB426F99ABE00507525 /* Instafilter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Instafilter.xcdatamodel; sourceTree = "<group>"; };
+		47517CB626F99ABE00507525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4763FC0B26ED62610014538B /* Frameworks */ = {
+		47517CA226F99ABC00507525 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,44 +37,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4763FC0526ED62610014538B = {
+		47517C9C26F99ABC00507525 = {
 			isa = PBXGroup;
 			children = (
-				4763FC1026ED62610014538B /* Examples */,
-				4763FC0F26ED62610014538B /* Products */,
+				47517CA726F99ABC00507525 /* Instafilter */,
+				47517CA626F99ABC00507525 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		4763FC0F26ED62610014538B /* Products */ = {
+		47517CA626F99ABC00507525 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4763FC0E26ED62610014538B /* Examples.app */,
+				47517CA526F99ABC00507525 /* Instafilter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4763FC1026ED62610014538B /* Examples */ = {
+		47517CA726F99ABC00507525 /* Instafilter */ = {
 			isa = PBXGroup;
 			children = (
-				4763FC1126ED62610014538B /* ExamplesApp.swift */,
-				4763FC1326ED62610014538B /* ContentView.swift */,
-				4763FC2026ED626C0014538B /* ExampleView1.swift */,
-				4763FC2226EE5F570014538B /* ExampleView2.swift */,
-				47DC064126EFF744004457AB /* ExampleView3.swift */,
-				47DC064326F00347004457AB /* ExampleView4.swift */,
-				47517CBC26FA5EFB00507525 /* ExampleView5.swift */,
-				47517CBE26FA660800507525 /* ExampleView6.swift */,
-				4763FC1526ED62630014538B /* Assets.xcassets */,
-				4763FC1A26ED62630014538B /* Info.plist */,
-				4763FC1726ED62630014538B /* Preview Content */,
+				47517CA826F99ABC00507525 /* InstafilterApp.swift */,
+				47517CAA26F99ABC00507525 /* ContentView.swift */,
+				47517CAC26F99ABE00507525 /* Assets.xcassets */,
+				47517CB126F99ABE00507525 /* Persistence.swift */,
+				47517CB626F99ABE00507525 /* Info.plist */,
+				47517CB326F99ABE00507525 /* Instafilter.xcdatamodeld */,
+				47517CAE26F99ABE00507525 /* Preview Content */,
 			);
-			path = Examples;
+			path = Instafilter;
 			sourceTree = "<group>";
 		};
-		4763FC1726ED62630014538B /* Preview Content */ = {
+		47517CAE26F99ABE00507525 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				4763FC1826ED62630014538B /* Preview Assets.xcassets */,
+				47517CAF26F99ABE00507525 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -90,38 +78,38 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4763FC0D26ED62610014538B /* Examples */ = {
+		47517CA426F99ABC00507525 /* Instafilter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4763FC1D26ED62630014538B /* Build configuration list for PBXNativeTarget "Examples" */;
+			buildConfigurationList = 47517CB926F99ABE00507525 /* Build configuration list for PBXNativeTarget "Instafilter" */;
 			buildPhases = (
-				4763FC0A26ED62610014538B /* Sources */,
-				4763FC0B26ED62610014538B /* Frameworks */,
-				4763FC0C26ED62610014538B /* Resources */,
+				47517CA126F99ABC00507525 /* Sources */,
+				47517CA226F99ABC00507525 /* Frameworks */,
+				47517CA326F99ABC00507525 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Examples;
-			productName = Examples;
-			productReference = 4763FC0E26ED62610014538B /* Examples.app */;
+			name = Instafilter;
+			productName = Instafilter;
+			productReference = 47517CA526F99ABC00507525 /* Instafilter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		4763FC0626ED62610014538B /* Project object */ = {
+		47517C9D26F99ABC00507525 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
-					4763FC0D26ED62610014538B = {
+					47517CA426F99ABC00507525 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
 			};
-			buildConfigurationList = 4763FC0926ED62610014538B /* Build configuration list for PBXProject "Examples" */;
+			buildConfigurationList = 47517CA026F99ABC00507525 /* Build configuration list for PBXProject "Instafilter" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -129,48 +117,44 @@
 				en,
 				Base,
 			);
-			mainGroup = 4763FC0526ED62610014538B;
-			productRefGroup = 4763FC0F26ED62610014538B /* Products */;
+			mainGroup = 47517C9C26F99ABC00507525;
+			productRefGroup = 47517CA626F99ABC00507525 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4763FC0D26ED62610014538B /* Examples */,
+				47517CA426F99ABC00507525 /* Instafilter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4763FC0C26ED62610014538B /* Resources */ = {
+		47517CA326F99ABC00507525 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4763FC1926ED62630014538B /* Preview Assets.xcassets in Resources */,
-				4763FC1626ED62630014538B /* Assets.xcassets in Resources */,
+				47517CB026F99ABE00507525 /* Preview Assets.xcassets in Resources */,
+				47517CAD26F99ABE00507525 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4763FC0A26ED62610014538B /* Sources */ = {
+		47517CA126F99ABC00507525 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47DC064426F00347004457AB /* ExampleView4.swift in Sources */,
-				4763FC2126ED626C0014538B /* ExampleView1.swift in Sources */,
-				47517CBF26FA660800507525 /* ExampleView6.swift in Sources */,
-				4763FC1426ED62610014538B /* ContentView.swift in Sources */,
-				47DC064226EFF744004457AB /* ExampleView3.swift in Sources */,
-				47517CBD26FA5EFB00507525 /* ExampleView5.swift in Sources */,
-				4763FC2326EE5F570014538B /* ExampleView2.swift in Sources */,
-				4763FC1226ED62610014538B /* ExamplesApp.swift in Sources */,
+				47517CB226F99ABE00507525 /* Persistence.swift in Sources */,
+				47517CB526F99ABE00507525 /* Instafilter.xcdatamodeld in Sources */,
+				47517CAB26F99ABC00507525 /* ContentView.swift in Sources */,
+				47517CA926F99ABC00507525 /* InstafilterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		4763FC1B26ED62630014538B /* Debug */ = {
+		47517CB726F99ABE00507525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -231,7 +215,7 @@
 			};
 			name = Debug;
 		};
-		4763FC1C26ED62630014538B /* Release */ = {
+		47517CB826F99ABE00507525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -286,44 +270,44 @@
 			};
 			name = Release;
 		};
-		4763FC1E26ED62630014538B /* Debug */ = {
+		47517CBA26F99ABE00507525 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Examples/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Instafilter/Preview Content\"";
 				DEVELOPMENT_TEAM = ZDU7N4AVB3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Examples/Info.plist;
+				INFOPLIST_FILE = Instafilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiger.studios.Examples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiger.studios.Instafilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		4763FC1F26ED62630014538B /* Release */ = {
+		47517CBB26F99ABE00507525 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Examples/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Instafilter/Preview Content\"";
 				DEVELOPMENT_TEAM = ZDU7N4AVB3;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Examples/Info.plist;
+				INFOPLIST_FILE = Instafilter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tiger.studios.Examples;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tiger.studios.Instafilter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -333,25 +317,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4763FC0926ED62610014538B /* Build configuration list for PBXProject "Examples" */ = {
+		47517CA026F99ABC00507525 /* Build configuration list for PBXProject "Instafilter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4763FC1B26ED62630014538B /* Debug */,
-				4763FC1C26ED62630014538B /* Release */,
+				47517CB726F99ABE00507525 /* Debug */,
+				47517CB826F99ABE00507525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4763FC1D26ED62630014538B /* Build configuration list for PBXNativeTarget "Examples" */ = {
+		47517CB926F99ABE00507525 /* Build configuration list for PBXNativeTarget "Instafilter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4763FC1E26ED62630014538B /* Debug */,
-				4763FC1F26ED62630014538B /* Release */,
+				47517CBA26F99ABE00507525 /* Debug */,
+				47517CBB26F99ABE00507525 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		47517CB326F99ABE00507525 /* Instafilter.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				47517CB426F99ABE00507525 /* Instafilter.xcdatamodel */,
+			);
+			currentVersion = 47517CB426F99ABE00507525 /* Instafilter.xcdatamodel */;
+			path = Instafilter.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 4763FC0626ED62610014538B /* Project object */;
+	rootObject = 47517C9D26F99ABC00507525 /* Project object */;
 }
