@@ -11,6 +11,7 @@ import CoreImage.CIFilterBuiltins
 
 struct ExampleView7: View {
     @State private var image: Image?
+    @State private var inputImage: UIImage?
     @State private var showingImagePicker = false
     
     var body: some View {
@@ -23,12 +24,20 @@ struct ExampleView7: View {
                 self.showingImagePicker = true
             }
         }
-        .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
         }
     }
     
     func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+        
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: inputImage)
+    }
+    
+    func loadImage2() {
         guard let inputImage = UIImage(named: "IMG_0068") else { return }
         
         // core image "image recipe"
