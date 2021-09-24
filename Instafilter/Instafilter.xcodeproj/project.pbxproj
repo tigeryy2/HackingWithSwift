@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4719C57A26FD8A2E00AD19D3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719C57926FD8A2E00AD19D3 /* ImagePicker.swift */; };
 		47517CA926F99ABC00507525 /* InstafilterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CA826F99ABC00507525 /* InstafilterApp.swift */; };
 		47517CAB26F99ABC00507525 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47517CAA26F99ABC00507525 /* ContentView.swift */; };
 		47517CAD26F99ABE00507525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47517CAC26F99ABE00507525 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4719C57926FD8A2E00AD19D3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		47517CA526F99ABC00507525 /* Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		47517CA826F99ABC00507525 /* InstafilterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstafilterApp.swift; sourceTree = "<group>"; };
 		47517CAA26F99ABC00507525 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				47517CA826F99ABC00507525 /* InstafilterApp.swift */,
 				47517CAA26F99ABC00507525 /* ContentView.swift */,
 				47517CAC26F99ABE00507525 /* Assets.xcassets */,
+				4719C57926FD8A2E00AD19D3 /* ImagePicker.swift */,
 				47517CB126F99ABE00507525 /* Persistence.swift */,
 				47517CB626F99ABE00507525 /* Info.plist */,
 				47517CB326F99ABE00507525 /* Instafilter.xcdatamodeld */,
@@ -146,6 +149,7 @@
 			files = (
 				47517CB226F99ABE00507525 /* Persistence.swift in Sources */,
 				47517CB526F99ABE00507525 /* Instafilter.xcdatamodeld in Sources */,
+				4719C57A26FD8A2E00AD19D3 /* ImagePicker.swift in Sources */,
 				47517CAB26F99ABC00507525 /* ContentView.swift in Sources */,
 				47517CA926F99ABC00507525 /* InstafilterApp.swift in Sources */,
 			);
