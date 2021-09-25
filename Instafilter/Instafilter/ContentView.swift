@@ -13,11 +13,13 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
+    @State private var currentFilter: CIFilter = .sepiaTone()
+    @State private var currentFilterName: String = "Sepia"
+    @State private var filterAmount = 0.5
+    @State private var image: Image?
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
-    @State private var currentFilter: CIFilter = .sepiaTone()
-    @State private var image: Image?
-    @State private var filterAmount = 0.5
+    @State private var showingNoImageAlert = false
     @State private var showingImagePicker = false
     @State private var showingFiltersSheet = false
     
@@ -64,14 +66,18 @@ struct ContentView: View {
                 }.padding(.vertical)
                 
                 HStack {
-                    Button("Change Filter") {
+                    Button("\(self.currentFilterName) Filter") {
                         self.showingFiltersSheet = true
                     }
                     
                     Spacer()
                     
                     Button("Save") {
-                        guard let processedImage = self.processedImage else { return }
+                        guard let processedImage = self.processedImage else {
+                            // if no image is selected, trigger alert
+                            self.showingNoImageAlert = true
+                            return
+                        }
                         
                         let imageSaver = ImageSaver()
                         imageSaver.successHandler = {
@@ -92,15 +98,32 @@ struct ContentView: View {
             }
             .actionSheet(isPresented: self.$showingFiltersSheet) {
                 ActionSheet(title: Text("Select a filter"), buttons: [
-                    .default(Text("Crystallize")) { self.setFilter(CIFilter.crystallize()) },
-                    .default(Text("Edges")) { self.setFilter(CIFilter.edges()) },
-                    .default(Text("Gaussian Blur")) { self.setFilter(CIFilter.gaussianBlur()) },
-                    .default(Text("Pixellate")) { self.setFilter(CIFilter.pixellate()) },
-                    .default(Text("Sepia Tone")) { self.setFilter(CIFilter.sepiaTone()) },
-                    .default(Text("Unsharp Mask")) { self.setFilter(CIFilter.unsharpMask()) },
-                    .default(Text("Vignette")) { self.setFilter(CIFilter.vignette()) },
+                    .default(Text("Crystallize")) {
+                        self.currentFilterName = "Crystallize"
+                        self.setFilter(CIFilter.crystallize()) },
+                    .default(Text("Edges")) {
+                        self.currentFilterName = "Edges"
+                        self.setFilter(CIFilter.edges()) },
+                    .default(Text("Gaussian Blur")) {
+                        self.currentFilterName = "Blur"
+                        self.setFilter(CIFilter.gaussianBlur()) },
+                    .default(Text("Pixellate")) {
+                        self.currentFilterName = "Pixellate"
+                        self.setFilter(CIFilter.pixellate()) },
+                    .default(Text("Sepia Tone")) {
+                        self.currentFilterName = "Sepia"
+                        self.setFilter(CIFilter.sepiaTone()) },
+                    .default(Text("Unsharp Mask")) {
+                        self.currentFilterName = "Unsharp Mask"
+                        self.setFilter(CIFilter.unsharpMask()) },
+                    .default(Text("Vignette")) {
+                        self.currentFilterName = "Vignette"
+                        self.setFilter(CIFilter.vignette()) },
                     .cancel()
                 ])
+            }
+            .alert(isPresented: self.$showingNoImageAlert) {
+                Alert(title: Text("Cannot Save Image"), message: Text("No image is selected"), dismissButton: .default(Text("Ok")))
             }
         }
     }
@@ -110,7 +133,6 @@ struct ContentView: View {
         guard let inputImage = inputImage else { return }
         
         // conditional setting of filter parameters
-        // TODO these values are a bit wonky...
         let inputKeys = currentFilter.inputKeys
         if inputKeys.contains(kCIInputAmountKey) {
             currentFilter.setValue(filterAmount, forKey: kCIInputAmountKey)
