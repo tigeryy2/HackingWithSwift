@@ -33,7 +33,7 @@ struct ContentView: View {
                 self.filterAmount = $0
                 
                 // reapply filter based on new intensity
-                self.applyProcessing()
+                self.loadImage()
             }
         )
         
