@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var centerCoordinate = CLLocationCoordinate2D()
     @State private var places = [MKPointAnnotation]()
     @State private var selectedPlace: MKPointAnnotation?
+    @State private var showingEditPlaceView = false
     @State private var showingPlaceDetails = false
     
     var body: some View {
@@ -37,6 +38,10 @@ struct ContentView: View {
                         newPlace.coordinate = self.centerCoordinate
                         newPlace.title = "Example Location"
                         self.places.append(newPlace)
+                        
+                        // allow user to edit details for new place
+                        self.selectedPlace = newPlace
+                        self.showingEditPlaceView = true
                     }) {
                         Image(systemName: "plus")
                     }
@@ -56,8 +61,15 @@ struct ContentView: View {
                 message: Text(self.selectedPlace?.subtitle ?? "Missing place information."),
                 primaryButton: .default(Text("OK")),
                 secondaryButton: .default(Text("Edit")) {
-                // edit this place
+                    // allow user to edit place info
+                    self.showingEditPlaceView = true
             })
+        }
+        .sheet(isPresented: self.$showingEditPlaceView) {
+            if self.selectedPlace != nil {
+                // we can force unwrap here, since we just checked to make sure it's not nil..
+                EditView(placemark: self.selectedPlace!)
+            }
         }
     }
 }
