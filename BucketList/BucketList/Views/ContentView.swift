@@ -11,6 +11,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isUnlocked = false
+    @State private var showingUnlockFailureAlert = false
+    @State private var unlockFailureMessage: String = ""
+    @State private var unlockFailureTitle: String = "Could Not Unlock!?!"
     
     var body: some View {
         ZStack {
@@ -29,6 +32,9 @@ struct ContentView: View {
                 .overlay(Circle().stroke().foregroundColor(.gray.opacity(0.5)))
             }
         }
+        .alert(isPresented: self.$showingUnlockFailureAlert) {
+            Alert(title: Text(self.unlockFailureTitle), message: Text(self.unlockFailureMessage), dismissButton: .default(Text("Oops")))
+        }
     }
     
     func authenticate() {
@@ -45,12 +51,15 @@ struct ContentView: View {
                     if success {
                         self.isUnlocked = true
                     } else {
-                        // error
+                        self.unlockFailureMessage = "Authentication failed, biometrics did not match!"
+                        self.showingUnlockFailureAlert = true
                     }
                 }
             }
         } else {
             // no biometrics
+            self.unlockFailureMessage = "Authentication failed, no biometrics available!"
+            self.showingUnlockFailureAlert = true
         }
     }
     
