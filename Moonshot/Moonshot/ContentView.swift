@@ -18,7 +18,8 @@ struct ContentView: View {
             List(missions) { mission in
                 NavigationLink(destination: MissionView(mission: mission, missions: self.missions, astronauts: self.astronauts)) {
                     MissionImage(imageName: mission.imageName)
-
+                        .accessibilityHidden(true)
+                    
                     VStack(alignment: .leading) {
                         Text(mission.displayName)
                             .font(.headline)

@@ -42,13 +42,21 @@ struct ContentView: View {
                     Text("How much sleep do you want?")
                         .font(.headline)
                     
-                    Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
-                        Text("\(sleepAmount, specifier: "%g")")
-                            .frame(maxWidth: .infinity, alignment: .center)
+                    HStack {
+                        Text("\(sleepAmount, specifier: "%g") hours")
+                        Spacer()
+                        Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
+                            Text("\(sleepAmount, specifier: "%g") hours")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .accessibilityLabel("\(sleepAmount, specifier: "%g") hours")
+                        }
+                        .onChange(of: sleepAmount, perform: { value in
+                            calculateBedTime()
+                        })
+                        .labelsHidden()
                     }
-                    .onChange(of: sleepAmount, perform: { value in
-                        calculateBedTime()
-                    })
+                    .accessibilityLabel("\(sleepAmount, specifier: "%g") hours of sleep")
+                    .accessibilityValue("\(sleepAmount, specifier: "%g") hours")
                 }
                 
                 Section {

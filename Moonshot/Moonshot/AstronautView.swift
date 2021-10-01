@@ -41,6 +41,7 @@ struct AstronautView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: geometry.size.width)
+                        .accessibilityLabel(self.astronaut.name)
                     
                     Text(self.astronaut.description)
                         .padding()
@@ -55,6 +56,7 @@ struct AstronautView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: geometry.size.width * 0.35)
+                                    .accessibilityHidden(true)
                                 VStack(alignment: .leading) {
                                     Text(mission.displayName)
                                         .font(.title)

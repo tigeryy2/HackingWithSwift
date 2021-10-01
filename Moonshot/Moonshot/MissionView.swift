@@ -42,14 +42,18 @@ struct MissionView: View {
             geometry in
             ScrollView(.vertical) {
                 VStack {
-                    Image(self.mission.imageName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: geometry.size.width * 0.7)
-                        .padding(.top)
-                    
-                    Text("Launched \(self.mission.formattedLaunchDate)")
-                        .font(.headline)
+                    Group {
+                        Image(self.mission.imageName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: geometry.size.width * 0.7)
+                            .padding(.top)
+                        
+                        Text("Launched \(self.mission.formattedLaunchDate)")
+                            .font(.headline)
+                    }
+                    .accessibilityElement(children: .ignore)
+                    .accessibilityLabel("\(self.mission.displayName), launched \(self.mission.formattedLaunchDate)")
                     
                     Text(self.mission.description)
                         .padding()
@@ -64,12 +68,14 @@ struct MissionView: View {
                                     .frame(width: 83, height: 60)
                                     .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                                     .overlay(RoundedRectangle(cornerRadius: 25).stroke((crewMember.role == "Commander") ? Color.yellow : Color.primary, lineWidth: 2))
+                                    .accessibilityHidden(true)
                                 VStack(alignment: .leading) {
                                     Text(crewMember.astronaut.name)
                                         .font(.headline)
                                     Text(crewMember.role)
                                         .foregroundColor((crewMember.role.starts(with: "Commander")) ? .yellow : .secondary)
                                 }
+                                .accessibilityElement(children: .combine)
                                 Spacer()
                             }
                             .padding(.horizontal)
