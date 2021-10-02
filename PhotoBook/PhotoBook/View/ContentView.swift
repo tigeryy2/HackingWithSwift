@@ -53,7 +53,7 @@ struct ContentView: View {
                         }
                     }
                 }
-                .onDelete(perform: deleteItems)
+                .onDelete(perform: deletePhotos)
             }
             .sheet(isPresented: self.$showingAddPhoto) {
                 AddPhotoView(image: self.$chosenImage)
@@ -87,30 +87,9 @@ struct ContentView: View {
         self.showingImagePicker = true
     }
     
-    /// Standard function to return the current app's documents directory
-    public static func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    private func addItem() {
+    private func deletePhotos(offsets: IndexSet) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
+            offsets.map { $0 }.forEach(self.deletePhotoFromCoreData)
             offsets.map { photos[$0] }.forEach(viewContext.delete)
 
             do {
@@ -122,6 +101,32 @@ struct ContentView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    /// Delete the photo on disk associated with the photos offset from disk
+    private func deletePhotoFromCoreData(offset: Int) {
+        let filename = self.photos[offset].wrappedFilename
+        
+        // do not delete placenholder image
+        if filename == "placeholder" {
+            return
+        }
+        
+        let fullFilename = ContentView.getDocumentsDirectory()
+            .appendingPathComponent(filename)
+        
+        // check that file exists, and that it's deletable
+        if (FileManager.default.fileExists(atPath: fullFilename.path)) {
+            if (FileManager.default.isDeletableFile(atPath: fullFilename.path)) {
+                try! FileManager.default.removeItem(atPath: fullFilename.path)
+            }
+        }
+    }
+    
+    /// Standard function to return the current app's documents directory
+    public static func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        return paths[0]
     }
 }
 
