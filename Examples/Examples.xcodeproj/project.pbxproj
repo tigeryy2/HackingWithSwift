@@ -18,9 +18,12 @@
 		47ADD3B426FBC31400265D70 /* ExampleView7.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADD3B326FBC31400265D70 /* ExampleView7.swift */; };
 		47ADD3B626FBC86500265D70 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADD3B526FBC86500265D70 /* ImagePicker.swift */; };
 		47ADD3BA26FC2A3800265D70 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADD3B926FC2A3800265D70 /* ImageSaver.swift */; };
+		47CBB682270A157E00713F7E /* ExampleView10.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBB681270A157E00713F7E /* ExampleView10.swift */; };
+		47CBB684270A175F00713F7E /* ImageInterpolationExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47CBB683270A175F00713F7E /* ImageInterpolationExampleView.swift */; };
 		47DC064226EFF744004457AB /* ExampleView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC064126EFF744004457AB /* ExampleView3.swift */; };
 		47DC064426F00347004457AB /* ExampleView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47DC064326F00347004457AB /* ExampleView4.swift */; };
 		47FB3F05270955A0002F6E51 /* ExampleView8.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB3F04270955A0002F6E51 /* ExampleView8.swift */; };
+		47FB3F072709617B002F6E51 /* ExampleView9.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB3F062709617B002F6E51 /* ExampleView9.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +40,12 @@
 		47ADD3B326FBC31400265D70 /* ExampleView7.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView7.swift; sourceTree = "<group>"; };
 		47ADD3B526FBC86500265D70 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		47ADD3B926FC2A3800265D70 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		47CBB681270A157E00713F7E /* ExampleView10.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView10.swift; sourceTree = "<group>"; };
+		47CBB683270A175F00713F7E /* ImageInterpolationExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInterpolationExampleView.swift; sourceTree = "<group>"; };
 		47DC064126EFF744004457AB /* ExampleView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView3.swift; sourceTree = "<group>"; };
 		47DC064326F00347004457AB /* ExampleView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView4.swift; sourceTree = "<group>"; };
 		47FB3F04270955A0002F6E51 /* ExampleView8.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView8.swift; sourceTree = "<group>"; };
+		47FB3F062709617B002F6E51 /* ExampleView9.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleView9.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 				47517CBE26FA660800507525 /* ExampleView6.swift */,
 				47ADD3B326FBC31400265D70 /* ExampleView7.swift */,
 				47FB3F04270955A0002F6E51 /* ExampleView8.swift */,
+				47FB3F062709617B002F6E51 /* ExampleView9.swift */,
+				47CBB681270A157E00713F7E /* ExampleView10.swift */,
+				47CBB683270A175F00713F7E /* ImageInterpolationExampleView.swift */,
 				47ADD3B926FC2A3800265D70 /* ImageSaver.swift */,
 				47ADD3B526FBC86500265D70 /* ImagePicker.swift */,
 				4763FC1526ED62630014538B /* Assets.xcassets */,
@@ -168,14 +177,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47CBB682270A157E00713F7E /* ExampleView10.swift in Sources */,
 				47ADD3B426FBC31400265D70 /* ExampleView7.swift in Sources */,
 				47DC064426F00347004457AB /* ExampleView4.swift in Sources */,
+				47CBB684270A175F00713F7E /* ImageInterpolationExampleView.swift in Sources */,
 				4763FC2126ED626C0014538B /* ExampleView1.swift in Sources */,
 				47517CBF26FA660800507525 /* ExampleView6.swift in Sources */,
 				4763FC1426ED62610014538B /* ContentView.swift in Sources */,
 				47DC064226EFF744004457AB /* ExampleView3.swift in Sources */,
 				47517CBD26FA5EFB00507525 /* ExampleView5.swift in Sources */,
 				47ADD3BA26FC2A3800265D70 /* ImageSaver.swift in Sources */,
+				47FB3F072709617B002F6E51 /* ExampleView9.swift in Sources */,
 				47FB3F05270955A0002F6E51 /* ExampleView8.swift in Sources */,
 				47ADD3B626FBC86500265D70 /* ImagePicker.swift in Sources */,
 				4763FC2326EE5F570014538B /* ExampleView2.swift in Sources */,
