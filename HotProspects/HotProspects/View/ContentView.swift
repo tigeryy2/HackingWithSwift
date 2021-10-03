@@ -10,21 +10,46 @@ import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-
+    
+    var prospects: Prospects = Prospects()
+    
     var body: some View {
-        Text("Hello")
+        TabView {
+            ProspectsView(filter: .none)
+                .tabItem {
+                    Image(systemName: "person.3")
+                    Text("Everyone")
+                }
+            ProspectsView(filter: .contacted)
+                .tabItem {
+                    Image(systemName: "checkmark.circle")
+                    Text("Contacted")
+                }
+            ProspectsView(filter: .uncontacted)
+                .tabItem {
+                    Image(systemName: "questionmark.diamond")
+                    Text("Uncontacted")
+                }
+            MeView()
+                .tabItem {
+                    Image(systemName: "person.crop.square")
+                    Text("Me")
+                }
+        }
+        // places this into environment of all child views
+        .environmentObject(self.prospects)
     }
-
+    
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-
+            
             do {
                 try viewContext.save()
             } catch {
@@ -35,11 +60,11 @@ struct ContentView: View {
             }
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            
             do {
                 try viewContext.save()
             } catch {
