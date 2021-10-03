@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		47478E272707E14300B9EAB5 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E252707E14300B9EAB5 /* Photo+CoreDataClass.swift */; };
-		47478E282707E14300B9EAB5 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E262707E14300B9EAB5 /* Photo+CoreDataProperties.swift */; };
 		47478E2B2708F22800B9EAB5 /* PhotoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E2A2708F22800B9EAB5 /* PhotoDetailView.swift */; };
 		47478E2D2709042800B9EAB5 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E2C2709042800B9EAB5 /* MapView.swift */; };
 		47478E302709055F00B9EAB5 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E2F2709055F00B9EAB5 /* LocationFetcher.swift */; };
+		47478E3327090AA100B9EAB5 /* Photo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E3127090AA100B9EAB5 /* Photo+CoreDataClass.swift */; };
+		47478E3427090AA100B9EAB5 /* Photo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E3227090AA100B9EAB5 /* Photo+CoreDataProperties.swift */; };
+		47478E36270917EE00B9EAB5 /* PhotoMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E35270917EE00B9EAB5 /* PhotoMapView.swift */; };
+		47478E3827091D5700B9EAB5 /* PhotoMKPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47478E3727091D5700B9EAB5 /* PhotoMKPointAnnotation.swift */; };
 		4795D4FA2707855F00A29FA8 /* PhotoBookApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795D4F92707855F00A29FA8 /* PhotoBookApp.swift */; };
 		4795D4FC2707855F00A29FA8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795D4FB2707855F00A29FA8 /* ContentView.swift */; };
 		4795D4FE2707856400A29FA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4795D4FD2707856400A29FA8 /* Assets.xcassets */; };
@@ -23,11 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		47478E252707E14300B9EAB5 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
-		47478E262707E14300B9EAB5 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47478E2A2708F22800B9EAB5 /* PhotoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailView.swift; sourceTree = "<group>"; };
 		47478E2C2709042800B9EAB5 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		47478E2F2709055F00B9EAB5 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
+		47478E3127090AA100B9EAB5 /* Photo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47478E3227090AA100B9EAB5 /* Photo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Photo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		47478E35270917EE00B9EAB5 /* PhotoMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMapView.swift; sourceTree = "<group>"; };
+		47478E3727091D5700B9EAB5 /* PhotoMKPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMKPointAnnotation.swift; sourceTree = "<group>"; };
 		4795D4F62707855F00A29FA8 /* PhotoBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4795D4F92707855F00A29FA8 /* PhotoBookApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoBookApp.swift; sourceTree = "<group>"; };
 		4795D4FB2707855F00A29FA8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,11 +57,12 @@
 		47478E292708F21100B9EAB5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4795D50C2707869300A29FA8 /* ImagePicker.swift */,
 				4795D4FB2707855F00A29FA8 /* ContentView.swift */,
 				4795D50E2707911600A29FA8 /* AddPhotoView.swift */,
 				47478E2A2708F22800B9EAB5 /* PhotoDetailView.swift */,
+				4795D50C2707869300A29FA8 /* ImagePicker.swift */,
 				47478E2C2709042800B9EAB5 /* MapView.swift */,
+				47478E35270917EE00B9EAB5 /* PhotoMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -66,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				47478E2F2709055F00B9EAB5 /* LocationFetcher.swift */,
+				47478E3727091D5700B9EAB5 /* PhotoMKPointAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -112,8 +118,8 @@
 		4795D51A2707A9CA00A29FA8 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				47478E252707E14300B9EAB5 /* Photo+CoreDataClass.swift */,
-				47478E262707E14300B9EAB5 /* Photo+CoreDataProperties.swift */,
+				47478E3127090AA100B9EAB5 /* Photo+CoreDataClass.swift */,
+				47478E3227090AA100B9EAB5 /* Photo+CoreDataProperties.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -188,14 +194,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47478E36270917EE00B9EAB5 /* PhotoMapView.swift in Sources */,
 				4795D5032707856400A29FA8 /* Persistence.swift in Sources */,
-				47478E272707E14300B9EAB5 /* Photo+CoreDataClass.swift in Sources */,
+				47478E3427090AA100B9EAB5 /* Photo+CoreDataProperties.swift in Sources */,
 				4795D4FC2707855F00A29FA8 /* ContentView.swift in Sources */,
 				4795D50F2707911600A29FA8 /* AddPhotoView.swift in Sources */,
 				47478E302709055F00B9EAB5 /* LocationFetcher.swift in Sources */,
+				47478E3827091D5700B9EAB5 /* PhotoMKPointAnnotation.swift in Sources */,
 				4795D50D2707869300A29FA8 /* ImagePicker.swift in Sources */,
+				47478E3327090AA100B9EAB5 /* Photo+CoreDataClass.swift in Sources */,
 				4795D4FA2707855F00A29FA8 /* PhotoBookApp.swift in Sources */,
-				47478E282707E14300B9EAB5 /* Photo+CoreDataProperties.swift in Sources */,
 				47478E2D2709042800B9EAB5 /* MapView.swift in Sources */,
 				4795D5062707856400A29FA8 /* PhotoBook.xcdatamodeld in Sources */,
 				47478E2B2708F22800B9EAB5 /* PhotoDetailView.swift in Sources */,
@@ -332,6 +340,7 @@
 				DEVELOPMENT_TEAM = ZDU7N4AVB3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add location info for photos that are added";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -362,6 +371,7 @@
 				DEVELOPMENT_TEAM = ZDU7N4AVB3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Add location info for photos that are added";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

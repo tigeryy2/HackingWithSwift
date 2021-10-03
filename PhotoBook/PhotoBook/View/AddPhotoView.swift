@@ -5,6 +5,7 @@
 //  Created by Tiger Yang on 10/1/21.
 //
 
+import CoreLocation
 import SwiftUI
 
 struct AddPhotoView: View {
@@ -16,17 +17,34 @@ struct AddPhotoView: View {
         animation: .default)
     private var photos: FetchedResults<Photo>
     
+    // Textfield state variables
     @State private var name: String = ""
     @State private var info: String = ""
+    @State private var latitude: String = ""
+    @State private var longitude: String = ""
     
+    // image picked for this photo
     @Binding var image: UIImage?
+    
+    let location: CLLocationCoordinate2D
     
     var body: some View {
         NavigationView {
             Form {
-                Section {
+                Section(header: Text("General")) {
                     TextField("Name", text: self.$name)
                     TextField("Info", text: self.$info)
+                }
+                
+                // populate on startup with the current location.
+                Section(header: Text("Location")) {
+                    TextField("Latitude", text: self.$latitude)
+                    TextField("Longitude", text: self.$longitude)
+                }
+                .keyboardType(.decimalPad)
+                .onAppear() {
+                    self.latitude = "\(location.latitude)"
+                    self.longitude = "\(location.longitude)"
                 }
                 
                 HStack {
@@ -54,13 +72,13 @@ struct AddPhotoView: View {
                 trailing:
                     Button(action: self.savePhoto) {
                         Text("Save")
-                            .font(.title3)
+                            .font(.title3.bold())
                     }
             )
         }
     }
     
-    /// Creates a Photo entity object, saves the data into Coredata, saves the photo to disk
+    /// Creates a Photo entity object, saves the data into Coredata, saves the photo to disk, and dismisses the sheet
     private func savePhoto() {
         withAnimation {
             let newPhoto = Photo(context: viewContext)
@@ -69,6 +87,10 @@ struct AddPhotoView: View {
             newPhoto.info = self.info
             newPhoto.filename = newPhoto.id?.uuidString
             newPhoto.timestamp = Date()
+            
+            newPhoto.photoToLocation = Location(context: viewContext)
+            newPhoto.photoToLocation?.latitude = Double(self.latitude) ?? 30.225
+            newPhoto.photoToLocation?.longitude = Double(self.longitude) ?? -97.616
             
             Self.savePhotoToDisk(self.image!, as: newPhoto.filename!)
             
@@ -86,11 +108,10 @@ struct AddPhotoView: View {
         }
     }
     
-    /// Save a new photo our app directory
+    /// Save some new  photo our app directory
     public static func savePhotoToDisk(_ photo: UIImage, as filename: String) {
         do {
             let fullFilename = ContentView.getDocumentsDirectory()
-            //.appendingPathComponent("SavedPhotos")
                 .appendingPathComponent(filename)
             
             if let jpegData = photo.jpegData(compressionQuality: 0.8) {
@@ -108,6 +129,6 @@ struct AddPhotoView_Previews: PreviewProvider {
     @State static var image: UIImage?
     
     static var previews: some View {
-        AddPhotoView(image: self.$image)
+        AddPhotoView(image: self.$image, location: CLLocationCoordinate2D(latitude: 30.0, longitude: -97.0))
     }
 }

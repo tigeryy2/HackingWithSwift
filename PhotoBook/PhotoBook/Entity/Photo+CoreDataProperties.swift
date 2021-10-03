@@ -2,14 +2,13 @@
 //  Photo+CoreDataProperties.swift
 //  PhotoBook
 //
-//  Created by Tiger Yang on 10/1/21.
+//  Created by Tiger Yang on 10/2/21.
 //
 //
 
 import Foundation
 import CoreData
 import UIKit
-
 
 extension Photo {
 
@@ -22,6 +21,7 @@ extension Photo {
     @NSManaged public var info: String?
     @NSManaged public var name: String?
     @NSManaged public var timestamp: Date?
+    @NSManaged public var photoToLocation: Location?
 
     public var wrappedFilename: String {
         self.filename ?? "placeholder"
@@ -39,6 +39,7 @@ extension Photo {
         self.name ?? "No One"
     }
     
+    /// Loads the UIImage from disk associated with this photo
     public func getUIImage() -> UIImage {
         let fullFilename = ContentView.getDocumentsDirectory()
             //.appendingPathComponent("SavedPhotos")

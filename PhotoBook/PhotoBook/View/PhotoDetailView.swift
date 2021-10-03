@@ -9,8 +9,6 @@ import CoreData
 import SwiftUI
 
 struct PhotoDetailView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    
     let photo: Photo
     
     var body: some View {

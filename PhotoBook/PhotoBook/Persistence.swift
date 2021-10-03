@@ -14,18 +14,15 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         
-        // add some preview data
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
-        
         let newPhoto = Photo(context: viewContext)
         newPhoto.id = UUID()
         newPhoto.name = "Tiger"
         newPhoto.info = "A person"
         newPhoto.timestamp = Date()
         newPhoto.filename = "placeholder"
+        newPhoto.photoToLocation = Location(context: viewContext)
+        newPhoto.photoToLocation?.latitude = 30.222533604458075
+        newPhoto.photoToLocation?.longitude = -97.61673317398859
         
         do {
             try viewContext.save()
