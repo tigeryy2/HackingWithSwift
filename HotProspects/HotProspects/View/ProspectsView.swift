@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 import CodeScanner
 
@@ -65,6 +66,13 @@ struct ProspectsView: View {
                                 self.prospects.toggle(prospect, to: false)
                             }
                         }
+                        
+                        // option to remind to contact
+                        if !prospect.isContacted {
+                            Button("Remind Me") {
+                                self.addNotification(for: prospect)
+                            }
+                        }
                     }
                 }
             }
@@ -86,6 +94,43 @@ struct ProspectsView: View {
         }
     }
     
+    func addNotification(for prospect: Prospect) {
+        let center = UNUserNotificationCenter.current()
+        
+        // closure that requests a notification
+        let addRequest = {
+            let content = UNMutableNotificationContent()
+            content.title = "Contact \(prospect.name)"
+            content.subtitle = prospect.emailAddress
+            content.sound = UNNotificationSound.default
+            
+            var dateComponents = DateComponents()
+            dateComponents.hour = 9
+            // trigger at 9 am
+            //let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+            center.add(request)
+        }
+        
+        // if notifications are authorized, schedule one, otherwise, ask for permissions and try again...
+        center.getNotificationSettings { settings in
+            if settings.authorizationStatus == .authorized {
+                addRequest()
+            } else {
+                center.requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+                    if success {
+                        addRequest()
+                    } else {
+                        print("well...")
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func handleScanResult(result: Result<String, CodeScannerView.ScanError>) {
         self.isShowingScanner = false
         
@@ -99,7 +144,8 @@ struct ProspectsView: View {
             person.name = details[0]
             person.emailAddress = details[1]
             
-            self.prospects.people.append(person)
+            // add to prospects and save
+            self.prospects.add(person)
         case .failure(let error):
             print("Scanning failed: \(error)")
         }
