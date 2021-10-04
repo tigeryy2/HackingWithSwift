@@ -47,30 +47,43 @@ struct ProspectsView: View {
         NavigationView {
             List {
                 ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "\((prospect.isContacted ? "person.fill.checkmark" : "person.fill.questionmark"))")
                     }
                     .contextMenu {
                         // we want to show only the buttons that make sense...
                         // no point having a "mark contacted", if we're already on the contacted page
                         if self.filter != .contacted {
-                            Button("Mark Contacted") {
+                            Button(action: {
                                 self.prospects.toggle(prospect, to: true)
+                            }) {
+                                Text("Mark Contacted")
+                                Image(systemName: "person.fill.checkmark")
                             }
                         }
                         if self.filter != .uncontacted {
-                            Button("Mark Uncontacted") {
+                            Button(action: {
                                 self.prospects.toggle(prospect, to: false)
+                            }) {
+                                Text("Mark Uncontacted")
+                                Image(systemName: "person.fill.questionmark")
                             }
                         }
                         
                         // option to remind to contact
                         if !prospect.isContacted {
-                            Button("Remind Me") {
+                            Button(action: {
                                 self.addNotification(for: prospect)
+                            }) {
+                                Text("Remind Me")
+                                Image(systemName: "exclamationmark.bubble.fill")
                             }
                         }
                     }
