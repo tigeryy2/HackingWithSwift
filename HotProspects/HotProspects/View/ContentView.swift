@@ -9,22 +9,25 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    /// Determines how to sort prospects
+    @State private var sortFilter: SortFilterType = .nameAlphabetical
     
+    // load prospects from file, or empty array if cannot load
     var prospects: Prospects = Prospects()
     
     var body: some View {
         TabView {
-            ProspectsView(filter: .none)
+            ProspectsView(sortFilter: self.$sortFilter, filter: .none)
                 .tabItem {
                     Image(systemName: "person.3")
                     Text("Everyone")
                 }
-            ProspectsView(filter: .contacted)
+            ProspectsView(sortFilter: self.$sortFilter, filter: .contacted)
                 .tabItem {
                     Image(systemName: "checkmark.circle")
                     Text("Contacted")
                 }
-            ProspectsView(filter: .uncontacted)
+            ProspectsView(sortFilter: self.$sortFilter, filter: .uncontacted)
                 .tabItem {
                     Image(systemName: "questionmark.diamond")
                     Text("Uncontacted")

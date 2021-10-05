@@ -18,17 +18,17 @@ struct MeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Name", text: $name)
+                TextField("Name", text: self.$name)
                     .textContentType(.name)
                     .font(.title)
                     .padding(.horizontal)
                 
-                TextField("Email address", text: $emailAddress)
+                TextField("Email address", text: self.$emailAddress)
                     .textContentType(.emailAddress)
                     .font(.title)
                     .padding([.horizontal, .bottom])
                 
-                Image(uiImage: generateQRCode(from: "\(name)\n\(emailAddress)"))
+                Image(uiImage: generateQRCode(from: "\(self.name)\n\(self.emailAddress)"))
                     .interpolation(.none)
                     .resizable()
                     .scaledToFit()
@@ -42,10 +42,10 @@ struct MeView: View {
     /// Generate QR Code for the string input data
     func generateQRCode(from string: String) -> UIImage {
         let data = Data(string.utf8)
-        filter.setValue(data, forKey: "inputMessage")
+        self.filter.setValue(data, forKey: "inputMessage")
 
-        if let outputImage = filter.outputImage {
-            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+        if let outputImage = self.filter.outputImage {
+            if let cgimg = self.context.createCGImage(outputImage, from: outputImage.extent) {
                 return UIImage(cgImage: cgimg)
             }
         }

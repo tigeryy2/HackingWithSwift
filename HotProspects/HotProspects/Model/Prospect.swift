@@ -18,19 +18,16 @@ class Prospect: Identifiable, Codable {
 class Prospects: ObservableObject {
     @Published private(set) var people: [Prospect]
     
-    static let saveKey = "SavedProspects"
+    static let saveFileName = "SavedProspects"
     
     init() {
-        // try to load from userdefaults
-        if let data = UserDefaults.standard.data(forKey: Self.saveKey) {
-            if let decoded = try? JSONDecoder().decode([Prospect].self, from: data) {
-                self.people = decoded
-                return
-            }
+        // load from file
+        do {
+            try self.people = DocumentUtils.load(from: Self.saveFileName)
+        } catch {
+            // if loading fails... just init empty array
+            self.people = []
         }
-        
-        // if loading fails... just init empty array
-        self.people = []
     }
     
     func add(_ prospect: Prospect) {
@@ -40,7 +37,11 @@ class Prospects: ObservableObject {
     
     private func save() {
         if let encoded = try? JSONEncoder().encode(self.people) {
-            UserDefaults.standard.set(encoded, forKey: Self.saveKey)
+            do {
+                try DocumentUtils.save(data: encoded, to: Self.saveFileName)
+            } catch {
+                print("Unable to save...")
+            }
         }
     }
     

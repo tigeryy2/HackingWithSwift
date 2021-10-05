@@ -10,8 +10,18 @@ import UserNotifications
 
 import CodeScanner
 
+/// Filter to show prospects
 enum FilterType {
     case none, contacted, uncontacted
+}
+
+/// Filter for order of prospects
+enum SortFilterType: String, CaseIterable, Identifiable {
+    var id: String { self.rawValue }
+    
+    case nameAlphabetical = "Name ALphabetical"
+    case emailAlphabetical = "Email Alphabetical"
+    case contacted = "Contacted"
 }
 
 struct ProspectsView: View {
@@ -19,8 +29,14 @@ struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     @State private var isShowingScanner = false
     
+    /// Method of sorting prospects
+    @Binding var sortFilter: SortFilterType
+    
+    /// random names to use as simulated data when qr scanner not available..
+    let randomName: [String] = ["Patterson", "Tom", "Christian", "Antonio", "Calvin"]
     let filter: FilterType
     
+    /// Title for the view based on filter
     var title: String {
         switch filter {
         case .none:
@@ -32,6 +48,7 @@ struct ProspectsView: View {
         }
     }
     
+    /// Filtered array of prospects, depending on value of 'filter'
     var filteredProspects: [Prospect] {
         switch filter {
         case .none:
@@ -43,10 +60,32 @@ struct ProspectsView: View {
         }
     }
     
+    /// Returns closure used to sort prospects
+    var sortMethod: (Prospect, Prospect) -> Bool {
+        switch self.sortFilter {
+        case .nameAlphabetical:
+            return {
+                (lhs: Prospect, rhs: Prospect) in
+                return lhs.name < rhs.name
+            }
+        case .emailAlphabetical:
+            return {
+                (lhs: Prospect, rhs: Prospect) in
+                return lhs.emailAddress < rhs.emailAddress
+            }
+        case .contacted:
+            return {
+                (lhs: Prospect, rhs: Prospect) in
+                // lhs goes first if it is true and rhs is false
+                return lhs.isContacted && !rhs.isContacted
+            }
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
+                ForEach(filteredProspects.sorted(by: self.sortMethod)) { prospect in
                     HStack {
                         VStack(alignment: .leading) {
                             Text(prospect.name)
@@ -55,6 +94,7 @@ struct ProspectsView: View {
                                 .foregroundColor(.secondary)
                         }
                         Spacer()
+                        // image on the right hand side, shows if person is contacted or not
                         Image(systemName: "\((prospect.isContacted ? "person.fill.checkmark" : "person.fill.questionmark"))")
                     }
                     .contextMenu {
@@ -98,12 +138,27 @@ struct ProspectsView: View {
                         Image(systemName: "qrcode.viewfinder")
                         Text("Scan")
                     })
+            .navigationBarItems(
+                leading:
+                    Text("Sort Filters")
+                    .foregroundColor(.blue)
+                    .contextMenu {
+                        // allow selection of prospect sort filter
+                        ForEach(SortFilterType.allCases) {
+                            type in
+                            Button(type.rawValue.capitalized) {
+                                self.sortFilter = type
+                            }
+                        }
+                    }
+            )
             .sheet(isPresented: self.$isShowingScanner) {
                 CodeScannerView(
                     codeTypes: [.qr],
-                    simulatedData: "Paul Hudson\npaul@hackingwithswift.com",
+                    simulatedData: "\(self.randomName.randomElement()!) Hudson\npaul@nfl.com",
                     completion: self.handleScanResult)
             }
+            .animation(.easeInOut)
         }
     }
     
@@ -143,7 +198,6 @@ struct ProspectsView: View {
         }
     }
     
-    
     func handleScanResult(result: Result<String, CodeScannerView.ScanError>) {
         self.isShowingScanner = false
         
@@ -169,7 +223,7 @@ struct ProspectsView_Previews: PreviewProvider {
     static var prospects = Prospects()
     
     static var previews: some View {
-        ProspectsView(filter: .none)
+        ProspectsView(sortFilter: .constant(SortFilterType.nameAlphabetical), filter: .none)
             .environmentObject(self.prospects)
     }
 }

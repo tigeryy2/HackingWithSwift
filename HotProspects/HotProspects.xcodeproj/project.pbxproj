@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47C8C323270C00E200DF955E /* DocumentUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C8C322270C00E200DF955E /* DocumentUtils.swift */; };
 		47F0B0F2270A6D8400A52539 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0B0F1270A6D8400A52539 /* ProspectsView.swift */; };
 		47F0B0F4270A6E1300A52539 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0B0F3270A6E1300A52539 /* MeView.swift */; };
 		47F0B0F8270A722900A52539 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47F0B0F7270A722900A52539 /* Prospect.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		47C8C322270C00E200DF955E /* DocumentUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentUtils.swift; sourceTree = "<group>"; };
 		47F0B0F1270A6D8400A52539 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
 		47F0B0F3270A6E1300A52539 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
 		47F0B0F7270A722900A52539 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
@@ -44,12 +46,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47C8C321270BFE7800DF955E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				47C8C322270C00E200DF955E /* DocumentUtils.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		47F0B0F5270A71FF00A52539 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				47FB3EF327094D78002F6E51 /* ContentView.swift */,
-				47F0B0F1270A6D8400A52539 /* ProspectsView.swift */,
 				47F0B0F3270A6E1300A52539 /* MeView.swift */,
+				47F0B0F1270A6D8400A52539 /* ProspectsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -84,6 +94,7 @@
 				47FB3EF127094D78002F6E51 /* HotProspectsApp.swift */,
 				47F0B0F5270A71FF00A52539 /* View */,
 				47F0B0F6270A721000A52539 /* Model */,
+				47C8C321270BFE7800DF955E /* Util */,
 				47FB3EF527094D7A002F6E51 /* Assets.xcassets */,
 				47FB3EFA27094D7A002F6E51 /* Persistence.swift */,
 				47FB3EFC27094D7A002F6E51 /* HotProspects.xcdatamodeld */,
@@ -178,6 +189,7 @@
 			files = (
 				47F0B0F4270A6E1300A52539 /* MeView.swift in Sources */,
 				47FB3EFB27094D7A002F6E51 /* Persistence.swift in Sources */,
+				47C8C323270C00E200DF955E /* DocumentUtils.swift in Sources */,
 				47FB3EF427094D78002F6E51 /* ContentView.swift in Sources */,
 				47F0B0F8270A722900A52539 /* Prospect.swift in Sources */,
 				47F0B0F2270A6D8400A52539 /* ProspectsView.swift in Sources */,
