@@ -9,10 +9,12 @@ import SwiftUI
 
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    @Environment(\.accessibilityEnabled) var accessibilityEnabled
     
     /// Drag offset of the card
     @State private var offset = CGSize.zero
     @State private var isShowingAnswer = false
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     let card: Card
     
@@ -37,18 +39,22 @@ struct CardView: View {
                 .shadow(radius: 10)
             
             VStack {
-                Text(card.prompt)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-                    .onTapGesture {
-                        withAnimation {
-                            self.isShowingAnswer.toggle()
-                        }
+                if self.accessibilityEnabled {
+                    // in voiceover mode, show only the answer or only the question
+                    Text(isShowingAnswer ? card.answer : card.prompt)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                } else {
+                    Text(card.prompt)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                    
+                    // show answer if tapped..
+                    if isShowingAnswer {
+                        Text(card.answer)
+                            .font(.title)
+                            .foregroundColor(.gray)
                     }
-                if self.isShowingAnswer {
-                    Text(card.answer)
-                        .font(.title)
-                        .foregroundColor(.gray)
                 }
             }
             .padding(20)
@@ -56,22 +62,37 @@ struct CardView: View {
         }
         .frame(width: 450, height: 250)
         .rotationEffect(.degrees(Double(offset.width / 5)))
-        .offset(x: offset.width * 3, y: 0)
+        .offset(x: offset.width * 2, y: 0)
         .opacity(1.5 - Double(abs(offset.width / 50)))
+        // tell voiceover that our cards can be buttons
+        .accessibility(addTraits: .isButton)
+        .onTapGesture {
+            withAnimation {
+                self.isShowingAnswer.toggle()
+            }
+        }
         .gesture(
             DragGesture()
                 .onChanged { gesture in
                     self.offset = gesture.translation
+                    self.feedback.prepare()
                 }
             
                 .onEnded { _ in
                     if abs(self.offset.width) > 100 {
+                        if self.offset.width > 0 {
+                            self.feedback.notificationOccurred(.success)
+                        } else {
+                            self.feedback.notificationOccurred(.error)
+                        }
+                        
                         self.removeCard?()
                     } else {
                         self.offset = .zero
                     }
                 }
         )
+        .animation(.spring())
     }
 }
 
