@@ -17,9 +17,11 @@ struct CardView: View {
     @State private var feedback = UINotificationFeedbackGenerator()
     
     let card: Card
+    let replaceWrongCard: Bool
     
     /// Closure to remove this card from parent, when card is moved out of the screen
     var removeCard: (() -> Void)? = nil
+    var replaceCard: (() -> Void)? = nil
     
     var body: some View {
         ZStack {
@@ -33,8 +35,11 @@ struct CardView: View {
                 .background(
                     self.differentiateWithoutColor
                     ? nil
+                    // if offset is exactly zero, show clear instead of green
                     : RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? Color.green : Color.red)
+                        .fill(offset.width >= 0 ?
+                              (offset.width == 0 ? Color.clear : Color.green)
+                              : Color.red)
                 )
                 .shadow(radius: 10)
             
@@ -84,6 +89,9 @@ struct CardView: View {
                             self.feedback.notificationOccurred(.success)
                         } else {
                             self.feedback.notificationOccurred(.error)
+                            if replaceWrongCard {
+                                self.replaceCard?()
+                            }
                         }
                         
                         self.removeCard?()
@@ -99,10 +107,10 @@ struct CardView: View {
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         if #available(iOS 15.0, *) {
-            CardView(card: Card.example)
+            CardView(card: Card.example, replaceWrongCard: true)
                 .previewInterfaceOrientation(.landscapeLeft)
         } else {
-            CardView(card: Card.example)
+            CardView(card: Card.example, replaceWrongCard: true)
         }
     }
 }
