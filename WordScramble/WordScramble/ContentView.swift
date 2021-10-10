@@ -17,7 +17,10 @@ struct ContentView: View {
     @State private var errorMessage: String = ""
     @State private var showingError: Bool = false
     
+    let wordColors: [Color] = [.red, .orange, .yellow, .green, .blue, .purple]
+    
     var body: some View {
+        
         NavigationView {
             VStack {
                 // "addWord" closure called upon return key
@@ -26,16 +29,27 @@ struct ContentView: View {
                     .padding()
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                
-                
-                List(addedWords, id: \.self) {
-                    word in
-                    HStack {
-                        Image(systemName: "\(word.count).circle")
-                        Text(word)
+                GeometryReader {
+                    fullGeometry in
+                    List(addedWords, id: \.self) {
+                        word in
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            GeometryReader {
+                                wordGeometry in
+                                Text(word)
+                                    // do not allow offset < 0
+                                    .offset(x: max(wordGeometry.frame(in: .global).midY - fullGeometry.size.width * 1.4, 0))
+                                    .foregroundColor(
+                                        Color(
+                                            red: Double(((wordGeometry.frame(in: .global).midY - 240)) / fullGeometry.size.height),
+                                            green: Double(1.0 - ((wordGeometry.frame(in: .global).midY - 240)) / fullGeometry.size.height),
+                                            blue: 0.7))
+                            }
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityLabel(Text("\(word), \(word.count) letters"))
                     }
-                    .accessibilityElement(children: .ignore)
-                    .accessibilityLabel(Text("\(word), \(word.count) letters"))
                 }
                 
                 Spacer()
@@ -43,9 +57,9 @@ struct ContentView: View {
             }
             .navigationBarTitle(rootWord)
             .navigationBarItems(trailing:
-                Button(action: startGame) {
-                    Text("Reset Word")
-                }
+                                    Button(action: startGame) {
+                Text("Reset Word")
+            }
             )
             .onAppear(perform: {
                 startGame()
@@ -57,6 +71,7 @@ struct ContentView: View {
                     dismissButton: .default(Text("OK")))
             })
         }
+        
         
     }
     
@@ -95,7 +110,9 @@ struct ContentView: View {
         let wordScore: Int = wordToAdd.count + 2
         self.score += wordScore
         
-        self.addedWords.insert(wordToAdd, at: 0)
+        withAnimation {
+            self.addedWords.insert(wordToAdd, at: 0)
+        }
         self.newWord = ""
     }
     

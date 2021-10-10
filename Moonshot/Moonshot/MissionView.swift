@@ -43,11 +43,15 @@ struct MissionView: View {
             ScrollView(.vertical) {
                 VStack {
                     Group {
-                        Image(self.mission.imageName)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: geometry.size.width * 0.7)
-                            .padding(.top)
+                        GeometryReader {
+                            imageGeo in
+                            Image(self.mission.imageName)
+                                .resizable()
+                                .scaledToFit()
+                                .position(x: imageGeo.size.width / 2, y: imageGeo.size.height / 2)
+                                .frame(maxWidth: max(imageGeo.frame(in: .global).midX + 100, 150), maxHeight: max(imageGeo.frame(in: .global).midY + 100, 150))
+                        }
+                        .frame(minWidth: 250, minHeight: 250)
                         
                         Text("Launched \(self.mission.formattedLaunchDate)")
                             .font(.headline)
@@ -57,30 +61,30 @@ struct MissionView: View {
                     
                     Text(self.mission.description)
                         .padding()
-                        
+                    
                     ForEach(self.crewMembers, id:\.role) {
                         crewMember in
                         NavigationLink(
                             destination: AstronautView(astronaut: crewMember.astronaut, astronauts: self.astronauts, allMissions: self.missions)) {
-                            HStack {
-                                Image(crewMember.astronaut.id)
-                                    .resizable()
-                                    .frame(width: 83, height: 60)
-                                    .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
-                                    .overlay(RoundedRectangle(cornerRadius: 25).stroke((crewMember.role == "Commander") ? Color.yellow : Color.primary, lineWidth: 2))
-                                    .accessibilityHidden(true)
-                                VStack(alignment: .leading) {
-                                    Text(crewMember.astronaut.name)
-                                        .font(.headline)
-                                    Text(crewMember.role)
-                                        .foregroundColor((crewMember.role.starts(with: "Commander")) ? .yellow : .secondary)
+                                HStack {
+                                    Image(crewMember.astronaut.id)
+                                        .resizable()
+                                        .frame(width: 83, height: 60)
+                                        .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
+                                        .overlay(RoundedRectangle(cornerRadius: 25).stroke((crewMember.role == "Commander") ? Color.yellow : Color.primary, lineWidth: 2))
+                                        .accessibilityHidden(true)
+                                    VStack(alignment: .leading) {
+                                        Text(crewMember.astronaut.name)
+                                            .font(.headline)
+                                        Text(crewMember.role)
+                                            .foregroundColor((crewMember.role.starts(with: "Commander")) ? .yellow : .secondary)
+                                    }
+                                    .accessibilityElement(children: .combine)
+                                    Spacer()
                                 }
-                                .accessibilityElement(children: .combine)
-                                Spacer()
+                                .padding(.horizontal)
                             }
-                            .padding(.horizontal)
-                        }
-                        .buttonStyle(PlainButtonStyle())
+                            .buttonStyle(PlainButtonStyle())
                     }
                     Spacer(minLength: 25)
                 }
