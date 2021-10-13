@@ -13,10 +13,20 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
+        
         for _ in 0..<10 {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
         }
+        
+        for _ in 0..<10 {
+            let newRoll = Roll(context: viewContext)
+            newRoll.time = Date()
+            newRoll.result = Array(0...12).randomElement()!
+            newRoll.numberOfDice = 2
+            newRoll.numberOfSides = 6
+        }
+        
         do {
             try viewContext.save()
         } catch {
