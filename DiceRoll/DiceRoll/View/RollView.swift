@@ -17,13 +17,17 @@ struct RollView: View {
         VStack {
             Text("Feeling Lucky?")
                 .font(.title)
-            DiceView(rollResult: self.$rollResult, numberOfSides: numberOfSides, numberOfDice: numberOfDice, rollDuration: 5)
+            DiceView(rollResult: self.$rollResult, diceSides: self.diceSides, numberOfSides: numberOfSides, numberOfDice: numberOfDice, rollDuration: 5.0)
             Button(
                 action: {
-                    self.rollResult = diceSides.randomElement()!
+                    // calculate roll result
+                    self.rollDice()
                 }) {
-                    Text("Hit Me")
+                    Text("Roll Dice")
                         .font(.title)
+                        .padding()
+                        .overlay(RoundedRectangle(cornerRadius: 25).stroke())
+                        .padding(.top)
                 }
             
             HStack {
@@ -43,11 +47,21 @@ struct RollView: View {
     }
     
     func load() {
+        // set default values, so we don't just get zeros
+        settingsModel.setDefaultValues()
+        
         self.numberOfDice = UserDefaults.standard.integer(forKey: settingsUserDefaultKeys.numberOfDice.rawValue)
         let sides = UserDefaults.standard.integer(forKey: settingsUserDefaultKeys.numberOfSides.rawValue)
         self.numberOfSides = sides
         
         self.diceSides = Array(1...sides)
+    }
+    
+    public func rollDice() {
+        self.rollResult = 0
+        for _ in 0 ..< self.numberOfDice {
+            self.rollResult += diceSides.randomElement()!
+        }
     }
 }
 

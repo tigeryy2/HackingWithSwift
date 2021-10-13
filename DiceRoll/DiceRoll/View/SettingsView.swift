@@ -12,6 +12,9 @@ struct SettingsView: View {
     @State private var numberOfDice: Int
     
     init() {
+        // make sure we don't load 0s if this is first startup
+        settingsModel.setDefaultValues()
+        
         self.numberOfDice = UserDefaults.standard.integer(forKey: settingsUserDefaultKeys.numberOfDice.rawValue)
         
         self.diceSides = UserDefaults.standard.integer(forKey: settingsUserDefaultKeys.numberOfSides.rawValue)
