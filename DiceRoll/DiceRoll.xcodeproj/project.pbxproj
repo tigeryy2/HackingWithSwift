@@ -18,6 +18,8 @@
 		4738E76E27138FEE00038CC7 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738E76D27138FEE00038CC7 /* ResultsView.swift */; };
 		4738E7742713A14D00038CC7 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738E7732713A14D00038CC7 /* SettingsModel.swift */; };
 		4738E7762713B72600038CC7 /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738E7752713B72600038CC7 /* DiceView.swift */; };
+		47C0595427179DD40092DDC6 /* Roll+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C0595227179DD40092DDC6 /* Roll+CoreDataClass.swift */; };
+		47C0595527179DD40092DDC6 /* Roll+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C0595327179DD40092DDC6 /* Roll+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		4738E76D27138FEE00038CC7 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		4738E7732713A14D00038CC7 /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
 		4738E7752713B72600038CC7 /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
+		47C0595227179DD40092DDC6 /* Roll+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47C0595327179DD40092DDC6 /* Roll+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Roll+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				4738E7732713A14D00038CC7 /* SettingsModel.swift */,
+				47C0595227179DD40092DDC6 /* Roll+CoreDataClass.swift */,
+				47C0595327179DD40092DDC6 /* Roll+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,6 +186,8 @@
 				4738E75927138C3400038CC7 /* ContentView.swift in Sources */,
 				4738E76A27138DD200038CC7 /* RollView.swift in Sources */,
 				4738E76C27138F6E00038CC7 /* SettingsView.swift in Sources */,
+				47C0595427179DD40092DDC6 /* Roll+CoreDataClass.swift in Sources */,
+				47C0595527179DD40092DDC6 /* Roll+CoreDataProperties.swift in Sources */,
 				4738E76E27138FEE00038CC7 /* ResultsView.swift in Sources */,
 				4738E75727138C3400038CC7 /* DiceRollApp.swift in Sources */,
 				4738E76327138C3700038CC7 /* DiceRoll.xcdatamodeld in Sources */,

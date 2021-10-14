@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RollView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @State private var diceSides: [Int] = [1, 2, 3, 4, 5, 6]
     @State private var numberOfDice: Int = 2
     @State private var numberOfSides: Int = 6
@@ -22,6 +24,9 @@ struct RollView: View {
                 action: {
                     // calculate roll result
                     self.rollDice()
+                    
+                    // add results to coreData
+                    addRollResult()
                 }) {
                     Text("Roll Dice")
                         .font(.title)
@@ -44,6 +49,25 @@ struct RollView: View {
         }
         // load settings from UserDefaults
         .onAppear(perform: load)
+    }
+    
+    private func addRollResult() {
+        withAnimation {
+            let newRoll = Roll(context: viewContext)
+            newRoll.time = Date()
+            newRoll.numberOfSides = Int16(self.numberOfSides)
+            newRoll.numberOfDice = Int16(self.numberOfDice)
+            newRoll.result = Int16(self.rollResult)
+            
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
     }
     
     func load() {
