@@ -26,15 +26,18 @@ struct ResortDetailsView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Size: \(size)")
-            Text("Price: \(price)")
+        Group {
+            Text("Size: \(size)").layoutPriority(1)
+            Spacer().frame(height: 0)
+            Text("Price: \(price)").layoutPriority(1)
         }
     }
 }
 
 struct ResortDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        ResortDetailsView(resort: Resort.example)
+        VStack {
+            ResortDetailsView(resort: Resort.example)
+        }
     }
 }
