@@ -1,6 +1,6 @@
 //
 //  Bundle-Decodable.swift
-//  Moonshot
+//  SnowSeeker
 //
 //  Created by Tiger Yang on 9/6/21.
 //
