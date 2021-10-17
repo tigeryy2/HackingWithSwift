@@ -16,8 +16,12 @@ class Favorites: ObservableObject {
 
     init() {
         // load our saved data
-
-        // still here? Use an empty array
+        if let loadedArray = UserDefaults.standard.object(forKey: saveKey) as? [String] {
+            self.resorts = Set(loadedArray)
+            return
+        }
+        
+        // if unable to load and cast... use empty array
         self.resorts = []
     }
 
@@ -41,6 +45,8 @@ class Favorites: ObservableObject {
     }
 
     func save() {
-        // write out our data
+        // since sets aren't supported, first convert to [String]
+        let resortsArray = resorts.sorted()
+        UserDefaults.standard.set(resortsArray, forKey: saveKey)
     }
 }
