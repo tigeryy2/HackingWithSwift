@@ -47,6 +47,6 @@ struct ExampleView2: View {
 
 struct ExampleView2_Previews: PreviewProvider {
     static var previews: some View {
-        ExampleView2()
+        ExampleView2().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
