@@ -21,7 +21,7 @@ struct ExampleView: View {
             List(wizards, id: \.self) { wizard in
                 Text(wizard.name ?? "Unknown")
             }
-            
+
             Button("Add") {
                 let wizard = Wizard(context: self.viewContext)
                 wizard.name = "Harry Potter"
@@ -43,6 +43,6 @@ struct ExampleView: View {
 
 struct ExampleView_Previews: PreviewProvider {
     static var previews: some View {
-        ExampleView()
+        ExampleView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
